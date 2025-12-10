@@ -166,7 +166,7 @@ class DetectionSystem:
                     all_blocks.append(block_info)
         
         cv2.imshow("Color", color_image)
-        cv2.imshow("Mask", combined_mask)  # 显示合并后的mask
+        cv2.imshow("Mask", combined_mask) 
         cv2.imshow('Filtered Color Image', filtered_color)
         
         return all_blocks
