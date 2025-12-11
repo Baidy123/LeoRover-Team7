@@ -69,7 +69,7 @@ ros2 launch slam_system slam_launch.py
 
 The SLAM and Navigation will be done based on the topics received from RPLiDAR A2M12.
 
-Clone the lidar package
+Clone the lidar package: 
 git clone -b ros2 https://github.com/Slamtec/rplidar_ros.git
 
 Clone the Leo Rover ROS2 package
