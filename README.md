@@ -7,15 +7,58 @@ The following sections provide detailed documentation for each subsystem within 
 
 
 # Trajectory Path Planning
-TO BE DONE
+This repository contains the implementation of **Trajectory Planning** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
+## Overview
+
+- Global path planning using ROS2
+- using controller for path following
+- configurable planners and tunable gains
+- intended to integrate with Navigation2 (NAV2) stack
+- located in 'trajectory_planning'
 
 # SLAM
-TO BE DONE
+This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
+## Overview
 
+- using **slam_toolbox** to run 2D SLAM
+- integrating **EKF** from robot_localization
+- using slam_launch.py
+- provides 'odom -> base_link -> laser' TF tree
+- Publishing '/map' , '/odom', '/scan' and 'tf' frames
+- integrated Lidar with the NUC
+- located in 'slam/'
+  
+---
+# Requirements
+
+- ROS2 Jazzy
+- slam_toolbox
+- robot_localization
+- Python 3.10+
+- Nav2 stack
+  
+---
+## Building the Workspace
+- colcon build --symlink-install
+- source install/setup.bash
+
+---
+## Run SLAM
+
+ros2 launch slam_system slam_launch.py
+
+---
+## Run Trajectory Planner
+
+ros2 launch trajectory_planning trajectory_launch.py
+
+
+
+---
 # Perception System
 
 This repository provides a Python module for real-time detection of colored blocks and the localization of a drop-off box center using an Intel RealSense depth camera and OpenCV. It serves as the perception front-end of a mobile manipulation system, providing 2D/3D target positions, simple orientation estimation, and drop-off box localization.
