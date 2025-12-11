@@ -85,9 +85,15 @@ git clone https://github.com/LeoRover/leo_robot-ros2.git
 
 ## leo_nav2
 
-launch folder: ekf_launch.py -> Used for robot localization by starting the Extended Kalman Filter
-               slam_launch.py -> Starts the slam toolbox node
-               nav2_launch.py -> Starts the entire Navigation2 stack
+launch folder: 
+
+ekf_launch.py -> Used for robot localization by starting the Extended Kalman Filter
+               
+               
+slam_launch.py -> Starts the slam toolbox node
+
+
+nav2_launch.py -> Starts the entire Navigation2 stack
 
                
 config folder: ekf.yaml -> Defines the configuration for EKF
