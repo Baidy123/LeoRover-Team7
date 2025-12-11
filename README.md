@@ -87,18 +87,20 @@ git clone https://github.com/LeoRover/leo_robot-ros2.git
 
 ## launch folder: 
 
-**ekf_launch.py -> ** Used for robot localization by starting the Extended Kalman Filter
+**ekf_launch.py ->** Used for robot localization by starting the Extended Kalman Filter
                
                
-slam_launch.py -> Starts the slam toolbox node
+**slam_launch.py ->** Starts the slam toolbox node
 
 
-nav2_launch.py -> Starts the entire Navigation2 stack
+**nav2_launch.py ->** Starts the entire Navigation2 stack
 
                
-config folder: ekf.yaml -> Defines the configuration for EKF
-               slam_toolbox.yaml -> Configure the file for slam_toolbox
-               nav2_params.yaml -> Configure the Nav2 System
+## config folder: 
+
+**ekf.yaml ->** Defines the configuration for EKF
+**slam_toolbox.yaml ->** Configure the file for slam_toolbox
+**nav2_params.yaml ->** Configure the Nav2 System
 
 ---
 # Important
@@ -112,12 +114,14 @@ source install/setup.bash
 
 ---
 ## Launching the LIDAR with map
+```bash
 ros2 launch rplidar_ros view_rplidar_a2m12_launch.py
-
+```
 ---
 ## Launch EKF (Odometry Filter)
+```python
 ros2 launch leo_nav2 ekf_launch.py
-
+```
 
 ---
 ## Launch SLAM Toolbox
