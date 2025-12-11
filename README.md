@@ -43,8 +43,10 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
   
 ---
 ### Building the Workspace
-- colcon build --symlink-install
-- source install/setup.bash
+```bash
+colcon build --symlink-install \
+source install/setup.bash
+```
 
 ---
 ### Run SLAM
