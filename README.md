@@ -10,7 +10,7 @@ The following sections provide detailed documentation for each subsystem within 
 This repository contains the implementation of **Trajectory Planning** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
-## Overview
+### Overview
 
 - Global path planning using ROS2
 - using controller for path following
@@ -22,7 +22,7 @@ This repository contains the implementation of **Trajectory Planning** for the L
 This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
-## Overview
+### Overview
 
 - using **slam_toolbox** to run 2D SLAM
 - integrating **EKF** from robot_localization
@@ -42,17 +42,17 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
 - Nav2 stack
   
 ---
-## Building the Workspace
+### Building the Workspace
 - colcon build --symlink-install
 - source install/setup.bash
 
 ---
-## Run SLAM
+### Run SLAM
 
 ros2 launch slam_system slam_launch.py
 
 ---
-## Run Trajectory Planner
+### Run Trajectory Planner
 
 ros2 launch trajectory_planning trajectory_launch.py
 
