@@ -18,6 +18,21 @@ This repository contains the implementation of **Trajectory Planning** for the L
 - intended to integrate with Navigation2 (NAV2) stack
 - located in 'trajectory_planning'
 
+---
+### Requirements
+
+- ROS2 Jazzy
+- Nav2 stack
+- Python 3.10+
+
+---
+### Run Trajectory Planner
+```python
+ros2 launch trajectory_planning trajectory_launch.py
+```
+
+
+---
 # SLAM
 This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
@@ -33,20 +48,14 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
 - located in 'slam/'
   
 ---
-# Requirements
+### Requirements
 
 - ROS2 Jazzy
 - slam_toolbox
 - robot_localization
 - Python 3.10+
 - Nav2 stack
-  
----
-### Building the Workspace
-```bash
-colcon build --symlink-install \
-source install/setup.bash
-```
+
 
 ---
 ### Run SLAM
@@ -54,11 +63,62 @@ source install/setup.bash
 ros2 launch slam_system slam_launch.py
 ```
 
+
 ---
-### Run Trajectory Planner
-```python
-ros2 launch trajectory_planning trajectory_launch.py
+# Installations
+
+The SLAM and Navigation will be done based on the topics received from RPLiDAR A2M12.
+
+Clone the lidar package
+git clone -b ros2 https://github.com/Slamtec/rplidar_ros.git
+
+Clone the Leo Rover ROS2 package
+git clone https://github.com/LeoRover/leo_robot-ros2.git
+
+
+
+---
+# File Structure
+
+## leo_nav2
+
+launch folder: ekf_launch.py -> Used for robot localization by starting the Extended Kalman Filter
+               slam_launch.py -> Starts the slam toolbox node
+               nav2_launch.py -> Starts the entire Navigation2 stack
+
+               
+config folder: ekf.yaml -> Defines the configuration for EKF
+               slam_toolbox.yaml -> Configure the file for slam_toolbox
+               nav2_params.yaml -> Configure the Nav2 System
+
+---
+# Important
+
+---
+## Building the Workspace
+```bash
+colcon build --symlink-install \
+source install/setup.bash
 ```
+
+---
+## Launching the LIDAR with map
+ros2 launch rplidar_ros view_rplidar_a2m12_launch.py
+
+---
+## Launch EKF (Odometry Filter)
+ros2 launch leo_nav2 ekf_launch.py
+
+
+---
+## Launch SLAM Toolbox
+ros2 launch leo_nav2 slam_launch.py
+
+
+---
+## Launch Navigation
+ros2 launch leo_nav2 nav2_launch.py
+
 
 
 ---
