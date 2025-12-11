@@ -48,14 +48,15 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
 
 ---
 ### Run SLAM
-
+```python
 ros2 launch slam_system slam_launch.py
+```
 
 ---
 ### Run Trajectory Planner
-
+```python
 ros2 launch trajectory_planning trajectory_launch.py
-
+```
 
 
 ---
