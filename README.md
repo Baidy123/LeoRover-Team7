@@ -285,7 +285,7 @@ colcon build
 source install/setup.bash
 ```
 ## To Launch Motion Planning
-### Run on external processor
+### Run on external processor (NUC)
 ```python
 ros2 launch mycobot_moveit_config move_group.launch.py
 ```
