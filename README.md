@@ -267,4 +267,16 @@ class DetectionSystem:
     def run(self, mode='block')
     def stop(self)
 ```
+## Arm Motion Control
 
+### Requirements
+
+### Run on external processor
+```python
+ros2 launch trajectory_planning trajectory_launch.py
+```
+
+### Run on MyCobot 280-pi
+```python
+ros2 run mycobot_280_moveit2_control sync_plan.py
+```
