@@ -267,16 +267,42 @@ class DetectionSystem:
     def run(self, mode='block')
     def stop(self)
 ```
-## Arm Motion Control
-
-### Requirements
-
+# Arm Motion Control
+This repository contains the Motion Planning and control for the MyCobot 280-pi planned on A NUC and executed on the arm using serial connection
+## Overview
+- Uses RViz2 to visualise mycobot 280-pi
+- Uses Moveit2 for controllers and motion planning
+- Plans motion on NUC
+- Serial connection sync node ran on mycobot 280_pi
+## Requirements
+- moveit_config_utils
+- ROS2 jazzy
+- RViz2
+- Python 3.8+
+### Building the workspace
+```python
+colcon build
+source install/setup.bash
+```
+## To Launch Motion Planning
 ### Run on external processor
 ```python
-ros2 launch trajectory_planning trajectory_launch.py
+ros2 launch mycobot_moveit_config move_group.launch.py
 ```
-
+## To Sync Motion Planning 
 ### Run on MyCobot 280-pi
 ```python
 ros2 run mycobot_280_moveit2_control sync_plan.py
 ```
+
+## File Structure
+### NUC_ros2
+**mycobot_description ->** Contains MyCobot 280-pi URDF description
+
+
+### mycobot_ros2
+**mycobot_280/mycobot_280_moveit2_control ->** Contains arm controller nodes
+**mycobot_description ->** Contains MyCobot 280-pi URDF description
+**mycobot_communication ->** Contains additional communication nodes for ROS2 topics and services
+
+
