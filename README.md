@@ -234,9 +234,6 @@ This starts the system in **block mode** with keyboard-based debugging enabled.
 The keyboard controls and the `run()` method are intended **only for debugging and visualization**.  
 They allow inspection of detection results, masks, edges, and intermediate data.
 
-### In deployment  
-Higher-level components (Navigation / Manipulator Control) will **directly call the detection methods**, and the debug interface will **not** be used.
-
 ---
 
 ## Integration With ROS (Work in Progress)
