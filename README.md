@@ -33,7 +33,7 @@ ros2 launch trajectory_planning trajectory_launch.py
 
 
 ---
-# SLAM
+# SLAM and Navigation
 This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
