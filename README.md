@@ -302,7 +302,9 @@ ros2 run mycobot_280_moveit2_control sync_plan.py
 
 ### mycobot_ros2
 **mycobot_280/mycobot_280_moveit2_control ->** Contains arm controller nodes
+
 **mycobot_description ->** Contains MyCobot 280-pi URDF description
+
 **mycobot_communication ->** Contains additional communication nodes for ROS2 topics and services
 
 
