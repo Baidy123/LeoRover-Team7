@@ -1,7 +1,7 @@
 
 # Project Overview
 
-This project implements a complete mobile manipulation system capable of autonomously detecting a target object, navigating toward it, and transporting it to a designated drop-off box. The robot integrates perception, SLAM, path planning, navigation control, manipulation, and low-level actuation into a unified framework.
+This project implements a complete mobile manipulation system capable of autonomously detecting a target object, navigating toward it, and transporting it to a designated drop-off box. The robot integrates perception, SLAM, navigation control, manipulation, and low-level actuation into a unified framework.
 
 The following sections provide detailed documentation for each subsystem within the project, including the Perception System, SLAM module, Navigation module,Trajectory Path Planning module, Manipulator Control, and Motor Control—describing their roles, algorithms, and implementation details.
 
@@ -37,7 +37,7 @@ ros2 launch trajectory_planning trajectory_launch.py
 This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
 
 ---
-### Overview
+## Overview
 
 - using **slam_toolbox** to run 2D SLAM
 - integrating **EKF** from robot_localization
@@ -48,7 +48,7 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
 - located in 'slam/'
   
 ---
-### Requirements
+## Requirements
 
 - ROS2 Jazzy
 - slam_toolbox
@@ -58,14 +58,14 @@ This repository contains the implementation of **SLAM toolbox** for the Leo Rove
 
 
 ---
-### Run SLAM
+## Run SLAM
 ```python
 ros2 launch slam_system slam_launch.py
 ```
 
 
 ---
-# Installations
+## Installations
 
 The SLAM and Navigation will be done based on the topics received from RPLiDAR A2M12.
 
@@ -81,11 +81,11 @@ git clone https://github.com/LeoRover/leo_robot-ros2.git
 
 
 ---
-# File Structure
+##File Structure
 
-## leo_nav2
+### leo_nav2
 
-## launch folder: 
+### launch folder: 
 
 **ekf_launch.py ->** Used for robot localization by starting the Extended Kalman Filter
                
@@ -96,7 +96,7 @@ git clone https://github.com/LeoRover/leo_robot-ros2.git
 **nav2_launch.py ->** Starts the entire Navigation2 stack
 
                
-## config folder: 
+### config folder: 
 
 **ekf.yaml ->** Defines the configuration for EKF
 
@@ -107,34 +107,34 @@ git clone https://github.com/LeoRover/leo_robot-ros2.git
 **nav2_params.yaml ->** Configure the Nav2 System
 
 ---
-# Important
+## Important
 
 ---
-## Building the Workspace
+### Building the Workspace
 ```bash
 colcon build --symlink-install \
 source install/setup.bash
 ```
 
 ---
-## Launching the LIDAR with map
+### Launching the LIDAR with map
 ```python
 ros2 launch rplidar_ros view_rplidar_a2m12_launch.py
 ```
 ---
-## Launch EKF (Odometry Filter)
+### Launch EKF (Odometry Filter)
 ```python
 ros2 launch leo_nav2 ekf_launch.py
 ```
 
 ---
-## Launch SLAM Toolbox
+### Launch SLAM Toolbox
 ```python
 ros2 launch leo_nav2 slam_launch.py
 ```
 
 ---
-## Launch Navigation
+### Launch Navigation
 ```python
 ros2 launch leo_nav2 nav2_launch.py
 ```
