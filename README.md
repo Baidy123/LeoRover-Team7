@@ -3,33 +3,8 @@
 
 This project implements a complete mobile manipulation system capable of autonomously detecting a target object, navigating toward it, and transporting it to a designated drop-off box. The robot integrates perception, SLAM, navigation control, manipulation, and low-level actuation into a unified framework.
 
-The following sections provide detailed documentation for each subsystem within the project, including the Perception System, SLAM module, Navigation module,Trajectory Path Planning module, Manipulator Control, and Motor Control—describing their roles, algorithms, and implementation details.
+The following sections provide detailed documentation for each subsystem within the project, including the Perception System, SLAM module, Navigation module and Manipulator Control, wihch describe their roles, algorithms, and implementation details.
 
-
-# Trajectory Path Planning
-This repository contains the implementation of **Trajectory Planning** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
-
----
-### Overview
-
-- Global path planning using ROS2
-- using controller for path following
-- configurable planners and tunable gains
-- intended to integrate with Navigation2 (NAV2) stack
-- located in 'trajectory_planning'
-
----
-### Requirements
-
-- ROS2 Jazzy
-- Nav2 stack
-- Python 3.10+
-
----
-### Run Trajectory Planner
-```python
-ros2 launch trajectory_planning trajectory_launch.py
-```
 
 
 ---
