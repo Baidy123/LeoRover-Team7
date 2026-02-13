@@ -1,0 +1,16 @@
+# Ignore VS Code internal settings and large IntelliSense databases
+.vscode/
+*.vc.db
+*.db
+
+# Ignore ROS build and devel folders
+elephant_arm_ws/build/
+elephant_arm_ws/devel/
+elephant_arm_ws/logs/
+
+# Ignore Python bytecode
+__pycache__/
+*.pyc
+
+# Ignore OS-specific files
+.DS_Store
