@@ -27,7 +27,6 @@ _colcon_prefix_chain_powershell_source_script "/home/student36/elephant_arm_ws/i
 _colcon_prefix_chain_powershell_source_script "/home/student36/rplidar_ws/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/student36/ws_moveit/install\local_setup.ps1"
 _colcon_prefix_chain_powershell_source_script "/home/student36/ros2_tutorial_workspace/install\local_setup.ps1"
-_colcon_prefix_chain_powershell_source_script "/home/student36/RoboticsDesignProject/mycobot_ros2/install\local_setup.ps1"
 
 # source this prefix
 $env:COLCON_CURRENT_PREFIX=(Split-Path $PSCommandPath -Parent)
