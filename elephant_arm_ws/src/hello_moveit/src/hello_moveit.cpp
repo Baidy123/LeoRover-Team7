@@ -6,6 +6,8 @@
 int main(int argc, char * argv[]){
     // Initialize ROS 2
     rclcpp::init(argc, argv);
+    
+
     auto const node = std::make_shared<rclcpp::Node>(
         "hello_moveit",
         rclcpp::NodeOptions().automatically_declare_parameters_from_overrides(true)
@@ -14,20 +16,36 @@ int main(int argc, char * argv[]){
     // Create logger
     auto const logger = rclcpp::get_logger("hello_moveit");
 
+    while (node->now().seconds() == 0) {
+        RCLCPP_INFO(logger, "Waiting for simulation clock...");
+        rclcpp::spin_some(node);
+        rclcpp::sleep_for(std::chrono::milliseconds(100));
+    }
+
     // Create the MoveIt MoveGroup Interface
     using moveit::planning_interface::MoveGroupInterface;
     auto move_group_interface = MoveGroupInterface(node, "arm_with_gripper");
 
     move_group_interface.startStateMonitor();
-    rclcpp::sleep_for(std::chrono::seconds(3));
+
+   RCLCPP_INFO(logger, "Spinning to catch joint states...");
+    auto start_wait = node->now();
+    while (rclcpp::ok() && (node->now() - start_wait).seconds() < 5.0) {
+        rclcpp::spin_some(node);
+        // If we can get a state with a tiny timeout, we are synced
+        if (move_group_interface.getCurrentState(0.01)) {
+            RCLCPP_INFO(logger, "Successfully synced with robot state.");
+            break;
+        }
+    }
 
     // Set a target Pose
     auto const target_pose = []{
         geometry_msgs::msg::Pose msg;
         msg.orientation.w = 1.0;
-        msg.position.x = 0.28;
-        msg.position.y = -0.2;
-        msg.position.z = 0.5;
+        msg.position.x = 0.18;
+        msg.position.y = 0.0;
+        msg.position.z = 0.2;
         return msg;
     }();
     move_group_interface.setPoseTarget(target_pose);
