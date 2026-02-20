@@ -2,12 +2,14 @@
 #include <rclcpp/rclcpp.hpp>
 #include <moveit/move_group_interface/move_group_interface.hpp>
 #include <moveit/robot_state/robot_state.hpp>
+#include <moveit_visual_tools/moveit_visual_tools.h>
+#include <thread>
 
 int main(int argc, char * argv[]){
     // Initialize ROS 2
     rclcpp::init(argc, argv);
     
-
+    // Initialize node
     auto const node = std::make_shared<rclcpp::Node>(
         "hello_moveit",
         rclcpp::NodeOptions().automatically_declare_parameters_from_overrides(true)
@@ -16,19 +18,26 @@ int main(int argc, char * argv[]){
     // Create logger
     auto const logger = rclcpp::get_logger("hello_moveit");
 
+    // Wait for the simulation clode to sync
     while (node->now().seconds() == 0) {
         RCLCPP_INFO(logger, "Waiting for simulation clock...");
         rclcpp::spin_some(node);
         rclcpp::sleep_for(std::chrono::milliseconds(100));
     }
 
+    // SingleThreadedExecutor for Visual Tools to interact with
+    rclcpp::executors::SingleThreadedExecutor executor;
+    executor.add_node(node);
+    auto spinner = std::thread([&executor]() {executor.spin();});
+
     // Create the MoveIt MoveGroup Interface
     using moveit::planning_interface::MoveGroupInterface;
     auto move_group_interface = MoveGroupInterface(node, "arm_with_gripper");
 
+    // Wait until we can get the current state of the cobot from joint_states
     move_group_interface.startStateMonitor();
 
-   RCLCPP_INFO(logger, "Spinning to catch joint states...");
+    RCLCPP_INFO(logger, "Spinning to catch joint states...");
     auto start_wait = node->now();
     while (rclcpp::ok() && (node->now() - start_wait).seconds() < 5.0) {
         rclcpp::spin_some(node);
@@ -38,6 +47,32 @@ int main(int argc, char * argv[]){
             break;
         }
     }
+
+    // Create and initialize MoveItVisualTools
+    auto moveit_visual_tools = moveit_visual_tools::MoveItVisualTools{
+        node, "base_link", rviz_visual_tools::RVIZ_MAKER_TOPIC,
+        move_group_interface.getRobotModel()
+    };
+    moveit_visual_tools.deleteAllMarkers();
+    moveit_visual_tools.loadRemoteControl();
+
+    // Create closures for visualization
+    auto const draw_title = [&moveit_visual_tools](auto text){
+        auto const text_pose = []{
+            auto msg = Eign::Isometry3d::Identity();
+            msg.translation().z() = 1.0;
+            return msg;
+        }();
+        moveit_visual_tools.publishText(text_pose, text, rviz_vsiaul_tools::WHITE,
+                                        rviz_visual_tools::XLARGE);
+    };
+    auto const prompt = [&moveit_visual_tools](auto text){
+        moveit_visual_tools.prompt(text);
+    };
+    auto const draw_trajectory_tool_path =
+        []
+
+    
 
     // Set a target Pose
     auto const target_pose = []{
@@ -54,12 +89,12 @@ int main(int argc, char * argv[]){
     moveit::core::RobotStatePtr current_state = move_group_interface.getCurrentState();
 
     if (!current_state){
-        RCLCPP_ERROR(logger, "FATAl failes to get robot state");
+        RCLCPP_ERROR(logger, "FATAL failed to get robot state");
         return 1;
     }
 
+    // Check that the point is reachable from the current pose
     const moveit::core::JointModelGroup* joint_model_group = current_state->getJointModelGroup("arm_with_gripper");
-
     bool found_ik = current_state->setFromIK(joint_model_group, target_pose);
 
     if(found_ik){
@@ -84,5 +119,6 @@ int main(int argc, char * argv[]){
     }
 
     rclcpp::shutdown();
+    spinner.join();
     return 0;
 }
