@@ -1,0 +1,80 @@
+[0.078s] Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/hello_moveit': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/hello_moveit -- -j12 -l12
+[0.414s] [ 50%] [32mBuilding CXX object CMakeFiles/hello_moveit.dir/src/hello_moveit.cpp.o[0m
+[5.717s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[5.717s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:53:47:[m[K [01;31m[Kerror: [m[K‘[01m[KRVIZ_MAKER_TOPIC[m[K’ is not a member of ‘[01m[Krviz_visual_tools[m[K’; did you mean ‘[01m[KRVIZ_MARKER_TOPIC[m[K’?
+[5.717s]    53 |         node, "base_link", rviz_visual_tools::[01;31m[KRVIZ_MAKER_TOPIC[m[K,
+[5.717s]       |                                               [01;31m[K^~~~~~~~~~~~~~~~[m[K
+[5.718s]       |                                               [32m[KRVIZ_MARKER_TOPIC[m[K
+[5.718s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:55:5:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::MoveItVisualTools(<brace-enclosed initializer list>)[m[K’
+[5.718s]    55 |     [01;31m[K}[m[K;
+[5.718s]       |     [01;31m[K^[m[K
+[5.718s] In file included from [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:5[m[K:
+[5.718s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:101:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::[01;32m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr&, const std::string&, const std::string&, moveit::core::RobotModelConstPtr)[m[K’
+[5.718s]   101 |   [01;36m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr& node, const std::string& base_frame,
+[5.719s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.719s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:101:3:[m[K [01;36m[Knote: [m[K  conversion of argument 3 would be ill-formed:
+[5.719s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:92:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::[01;32m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr&, const std::string&, const std::string&, planning_scene_monitor::PlanningSceneMonitorPtr)[m[K’
+[5.719s]    92 |   [01;36m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr& node, const std::string& base_frame, const std::string& marker_topic,
+[5.719s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.719s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:92:3:[m[K [01;36m[Knote: [m[K  conversion of argument 3 would be ill-formed:
+[5.719s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:83:3:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::[01;32m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr&)[m[K’
+[5.719s]    83 |   [01;36m[KMoveItVisualTools[m[K(const rclcpp::Node::SharedPtr& node);
+[5.719s]       |   [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.720s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:83:3:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 4 provided
+[5.720s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:74:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::[01;32m[KMoveItVisualTools[m[K(const moveit_visual_tools::MoveItVisualTools&)[m[K’
+[5.720s]    74 | class [01;36m[KMoveItVisualTools[m[K : public rviz_visual_tools::RvizVisualTools
+[5.720s]       |       [01;36m[K^~~~~~~~~~~~~~~~~[m[K
+[5.720s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:74:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 4 provided
+[5.720s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:74:7:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kmoveit_visual_tools::MoveItVisualTools::[01;32m[KMoveItVisualTools[m[K(moveit_visual_tools::MoveItVisualTools&&)[m[K’
+[5.720s] [01m[K/home/student36/ws_moveit/install/moveit_visual_tools/include/moveit_visual_tools/moveit_visual_tools.h:74:7:[m[K [01;36m[Knote: [m[K  candidate expects 1 argument, 4 provided
+[5.720s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In lambda function:
+[5.720s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:62:24:[m[K [01;31m[Kerror: [m[K‘[01m[KEign[m[K’ has not been declared
+[5.721s]    62 |             auto msg = [01;31m[KEign[m[K::Isometry3d::Identity();
+[5.721s]       |                        [01;31m[K^~~~[m[K
+[5.721s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In lambda function:
+[5.721s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:66:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kmoveit_visual_tools[m[K’ is not captured
+[5.721s]    66 |         [01;31m[Kmoveit_visual_tools[m[K.publishText(text_pose, text, rviz_vsiaul_tools::WHITE,
+[5.721s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.721s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:60:50:[m[K [01;36m[Knote: [m[Kthe lambda has no capture-default
+[5.721s]    60 |     auto const draw_title = [&moveit_visual_tools[01;36m[K][m[K(auto text){
+[5.721s]       |                                                  [01;36m[K^[m[K
+[5.721s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:52:10:[m[K [01;36m[Knote: [m[K‘[01m[K<typeprefixerror>moveit_visual_tools[m[K’ declared here
+[5.722s]    52 |     auto [01;36m[Kmoveit_visual_tools[m[K = moveit_visual_tools::MoveItVisualTools{
+[5.722s]       |          [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.722s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:66:58:[m[K [01;31m[Kerror: [m[K‘[01m[Krviz_vsiaul_tools[m[K’ has not been declared
+[5.722s]    66 |         moveit_visual_tools.publishText(text_pose, text, [01;31m[Krviz_vsiaul_tools[m[K::WHITE,
+[5.722s]       |                                                          [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+[5.722s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In lambda function:
+[5.722s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:70:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kmoveit_visual_tools[m[K’ is not captured
+[5.722s]    70 |         [01;31m[Kmoveit_visual_tools[m[K.prompt(text);
+[5.722s]       |         [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.722s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:69:46:[m[K [01;36m[Knote: [m[Kthe lambda has no capture-default
+[5.723s]    69 |     auto const prompt = [&moveit_visual_tools[01;36m[K][m[K(auto text){
+[5.723s]       |                                              [01;36m[K^[m[K
+[5.723s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:52:10:[m[K [01;36m[Knote: [m[K‘[01m[K<typeprefixerror>moveit_visual_tools[m[K’ declared here
+[5.723s]    52 |     auto [01;36m[Kmoveit_visual_tools[m[K = moveit_visual_tools::MoveItVisualTools{
+[5.723s]       |          [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.723s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In lambda function:
+[5.723s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:77:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kmoveit_visual_tools[m[K’ is not captured
+[5.723s]    77 |             [01;31m[Kmoveit_visual_tools[m[K.publishTrajectoryLine(trajectory, jmg);
+[5.723s]       |             [01;31m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.724s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:76:10:[m[K [01;36m[Knote: [m[Kthe lambda has no capture-default
+[5.724s]    76 |         )[01;36m[K][m[K(auto const trajectory){
+[5.724s]       |          [01;36m[K^[m[K
+[5.724s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:52:10:[m[K [01;36m[Knote: [m[K‘[01m[K<typeprefixerror>moveit_visual_tools[m[K’ declared here
+[5.724s]    52 |     auto [01;36m[Kmoveit_visual_tools[m[K = moveit_visual_tools::MoveItVisualTools{
+[5.724s]       |          [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
+[5.724s] /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp: In instantiation of ‘[01m[Kmain(int, char**)::<lambda(auto:47)> [35m[K[with auto:47 = const char*][m[K[m[K’:
+[5.724s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:107:19:[m[K   required from here
+[5.724s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:61:20:[m[K [01;31m[Kerror: [m[Kdeduced type ‘[01m[Kconst void[m[K’ for ‘[01m[Ktext_pose[m[K’ is incomplete
+[5.724s]    61 |         auto const [01;31m[Ktext_pose[m[K = []{
+[5.724s]       |                    [01;31m[K^~~~~~~~~[m[K
+[5.727s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[5.727s] [01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/hello_moveit/src/hello_moveit.cpp:118:45:[m[K [01;31m[Kerror: [m[K‘[01m[Ktrajectory[m[K’ was not declared in this scope; did you mean ‘[01m[Ktrajectory_msgs[m[K’?
+[5.728s]   118 |             draw_trajectory_tool_path(plan, [01;31m[Ktrajectory[m[K);
+[5.728s]       |                                             [01;31m[K^~~~~~~~~~[m[K
+[5.728s]       |                                             [32m[Ktrajectory_msgs[m[K
+[7.873s] gmake[2]: *** [CMakeFiles/hello_moveit.dir/build.make:76: CMakeFiles/hello_moveit.dir/src/hello_moveit.cpp.o] Error 1
+[7.874s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/hello_moveit.dir/all] Error 2
+[7.874s] gmake: *** [Makefile:146: all] Error 2
+[7.876s] Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/hello_moveit' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/hello_moveit -- -j12 -l12
