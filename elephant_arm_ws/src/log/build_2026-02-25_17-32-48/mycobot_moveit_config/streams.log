@@ -1,0 +1,123 @@
+[0.046s] Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mycobot_ros2/mycobot_moveit_config -DCMAKE_INSTALL_PREFIX=/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config
+[0.141s] -- The C compiler identification is GNU 13.3.0
+[0.228s] -- The CXX compiler identification is GNU 13.3.0
+[0.248s] -- Detecting C compiler ABI info
+[0.415s] -- Detecting C compiler ABI info - done
+[0.428s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.429s] -- Detecting C compile features
+[0.429s] -- Detecting C compile features - done
+[0.526s] -- Detecting CXX compiler ABI info
+[0.665s] -- Detecting CXX compiler ABI info - done
+[0.679s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.679s] -- Detecting CXX compile features
+[0.680s] -- Detecting CXX compile features - done
+[0.694s] -- Found ament_cmake: 2.5.5 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.116s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.381s] -- Found moveit_ros_planning_interface: 2.14.1 (/home/student36/ws_moveit/install/moveit_ros_planning_interface/share/moveit_ros_planning_interface/cmake)
+[1.641s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: date_time filesystem program_options system thread 
+[1.847s] -- Found rosidl_generator_c: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.915s] -- Found rosidl_generator_cpp: 4.6.7 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.973s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.057s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.814s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[3.058s] -- Found parameter_traits: 0.6.0 (/opt/ros/jazzy/share/parameter_traits/cmake)
+[3.230s] -- Found rmw_implementation_cmake: 7.3.3 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[3.251s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.451s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[3.485s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[3.543s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.792s] -- Found rclcpp_lifecycle: 28.1.16 (/opt/ros/jazzy/share/rclcpp_lifecycle/cmake)
+[3.888s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: filesystem 
+[4.088s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[4.088s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[4.600s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread chrono 
+[4.719s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread system filesystem regex date_time program_options 
+[4.786s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread 
+[4.888s] -- Found moveit_kinematics: 2.14.1 (/home/student36/ws_moveit/install/moveit_kinematics/share/moveit_kinematics/cmake)
+[4.894s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: program_options system 
+[4.945s] -- Found moveit_planners_ompl: 2.14.1 (/home/student36/ws_moveit/install/moveit_planners_ompl/share/moveit_planners_ompl/cmake)
+[4.991s] -- Found moveit_ros_visualization: 2.14.1 (/home/student36/ws_moveit/install/moveit_ros_visualization/share/moveit_ros_visualization/cmake)
+[5.013s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread date_time system filesystem 
+[5.176s] -- Setting OGRE_DIR to: '/opt/ros/jazzy/share/rviz_ogre_vendor/cmake/../../../opt/rviz_ogre_vendor/lib/OGRE/cmake'
+[5.178s] -- Found OGRE
+[5.178s] --   static     : OFF
+[5.178s] --   components : MeshLodGenerator;Overlay;Paging;Property;RTShaderSystem;Terrain;Volume
+[5.178s] --   plugins    : Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+[5.178s] --   media      : /opt/ros/jazzy/opt/rviz_ogre_vendor/share/OGRE/Media
+[5.178s] -- OGRE_LIBRARIES: OgreMeshLodGenerator;OgreOverlay;OgrePaging;OgreProperty;OgreRTShaderSystem;OgreTerrain;OgreVolume;OgreMain
+[5.178s] -- OGRE_LIBRARY_DIRS: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib
+[5.178s] -- OGRE_PLUGINS: Plugin_BSPSceneManager;Plugin_OctreeSceneManager;Plugin_PCZSceneManager;Plugin_ParticleFX;RenderSystem_GL;RenderSystem_GL3Plus;Codec_STBI
+[5.178s] -- OGRE_PLUGIN_DIR: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib/OGRE
+[5.179s] -- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_RELEASE: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+[5.179s] -- rviz_ogre_vendor::OgreOverlay for IMPORTED_LOCATION_DEBUG: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib/libOgreOverlay.so
+[5.179s] -- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_RELEASE: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib/libOgreMain.so
+[5.179s] -- rviz_ogre_vendor::OgreMain for IMPORTED_LOCATION_DEBUG: /opt/ros/jazzy/opt/rviz_ogre_vendor/lib/libOgreMain.so
+[5.275s] -- Found ZLIB: /usr/lib/x86_64-linux-gnu/libz.so (found version "1.3")  
+[5.322s] -- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+[5.820s] -- Found X11: /usr/include   
+[5.820s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so
+[5.958s] -- Looking for XOpenDisplay in /usr/lib/x86_64-linux-gnu/libX11.so;/usr/lib/x86_64-linux-gnu/libXext.so - found
+[5.958s] -- Looking for gethostbyname
+[6.111s] -- Looking for gethostbyname - found
+[6.111s] -- Looking for connect
+[6.254s] -- Looking for connect - found
+[6.254s] -- Looking for remove
+[6.387s] -- Looking for remove - found
+[6.387s] -- Looking for shmat
+[6.540s] -- Looking for shmat - found
+[6.540s] -- Looking for IceConnectionNumber in ICE
+[6.660s] -- Looking for IceConnectionNumber in ICE - found
+[6.731s] -- Setting yaml-cpp_DIR to: '/opt/ros/jazzy/share/yaml_cpp_vendor/cmake/../../../opt/yaml_cpp_vendor/share/cmake/yaml-cpp'
+[6.739s] -- Found PkgConfig: /usr/bin/pkg-config (found version "1.8.1") 
+[6.741s] -- Checking for module 'yaml-cpp'
+[6.773s] --   Found yaml-cpp, version 0.8.0
+[7.014s] -- Found rviz_visual_tools: 4.1.4 (/home/student36/ws_moveit/install/rviz_visual_tools/share/rviz_visual_tools/cmake)
+[7.038s] -- Found ament_lint_auto: 0.17.4 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[7.244s] -- Added test 'flake8' to check Python code syntax and style conventions
+[7.244s] -- Configured 'flake8' exclude dirs and/or files: 
+[7.248s] -- Added test 'lint_cmake' to check CMake code style
+[7.251s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[7.259s] -- Added test 'xmllint' to check XML markup files
+[7.265s] -- Configuring done (7.2s)
+[7.275s] -- Generating done (0.0s)
+[7.281s] -- Build files have been written to: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config
+[7.330s] Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mycobot_ros2/mycobot_moveit_config -DCMAKE_INSTALL_PREFIX=/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config
+[7.331s] Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config -- -j12 -l12
+[7.389s] Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config -- -j12 -l12
+[7.391s] Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config
+[7.412s] -- Install configuration: ""
+[7.413s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config
+[7.413s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/ompl_planning.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/stomp_planning.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/pilz_industrial_motion_planner_planning.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/mycobot_280.srdf
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/ros2_controllers.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/ros2_controllers_template.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/initial_positions.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/joint_limits.yaml
+[7.420s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/moveit_controllers.yaml
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/pilz_cartesian_limits.yaml
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/kinematics.yaml
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/launch
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/launch/load_ros2_controllers.launch.py
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/launch/move_group.launch.py
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/rviz
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/rviz/move_group.rviz
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/.setup_assistant
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/ament_index/resource_index/package_run_dependencies/mycobot_moveit_config
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/ament_index/resource_index/parent_prefix_path/mycobot_moveit_config
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/environment/ament_prefix_path.sh
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/environment/ament_prefix_path.dsv
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/environment/path.sh
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/environment/path.dsv
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/local_setup.bash
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/local_setup.sh
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/local_setup.zsh
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/local_setup.dsv
+[7.421s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/package.dsv
+[7.422s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/ament_index/resource_index/packages/mycobot_moveit_config
+[7.422s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/cmake/mycobot_moveit_configConfig.cmake
+[7.423s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/cmake/mycobot_moveit_configConfig-version.cmake
+[7.423s] -- Installing: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/install/mycobot_moveit_config/share/mycobot_moveit_config/package.xml
+[7.425s] Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/build/mycobot_moveit_config
