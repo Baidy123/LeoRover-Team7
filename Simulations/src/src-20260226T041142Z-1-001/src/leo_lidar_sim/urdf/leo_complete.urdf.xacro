@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo_sim_complete">
+  
+  <!-- Include official Leo Rover -->
+  <xacro:include filename="$(find leo_description)/urdf/leo_sim.urdf.xacro"/>
+  
+  <!-- myCobot Arm mounted on top -->
+  
+  <!-- Arm Base -->
+  <link name="mycobot_base">
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.08 0.08 0.05"/>
+      </geometry>
+      <material name="arm_grey">
+        <color rgba="0.4 0.4 0.4 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.08 0.08 0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <origin xyz="0 0 0.025"/>
+      <inertia ixx="0.001" iyy="0.001" izz="0.001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="mycobot_base_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="mycobot_base"/>
+    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Arm Link 1 - Rotating Column -->
+  <link name="mycobot_link1">
+    <visual>
+      <origin xyz="0 0 0.06" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.12"/>
+      </geometry>
+      <material name="arm_blue">
+        <color rgba="0.2 0.5 1.0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.06" rpy="0 0 0"/>
+      <geometry>
+        <cylinder radius="0.03" length="0.12"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.3"/>
+      <origin xyz="0 0 0.06"/>
+      <inertia ixx="0.0005" iyy="0.0005" izz="0.0001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="mycobot_joint1" type="revolute">
+    <parent link="mycobot_base"/>
+    <child link="mycobot_link1"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="2" velocity="1.5"/>
+    <dynamics damping="0.2" friction="0.1"/>
+  </joint>
+
+  <!-- Arm Link 2 - Upper Arm -->
+  <link name="mycobot_link2">
+    <visual>
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.15"/>
+      </geometry>
+      <material name="arm_blue"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.075" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.04 0.04 0.15"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <origin xyz="0 0 0.075"/>
+      <inertia ixx="0.0004" iyy="0.0004" izz="0.0001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="mycobot_joint2" type="revolute">
+    <parent link="mycobot_link1"/>
+    <child link="mycobot_link2"/>
+    <origin xyz="0 0 0.12" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.5" upper="1.5" effort="2" velocity="1.5"/>
+    <dynamics damping="0.2" friction="0.1"/>
+  </joint>
+
+  <!-- Gripper -->
+  <link name="mycobot_gripper">
+    <visual>
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.08 0.04"/>
+      </geometry>
+      <material name="arm_black">
+        <color rgba="0.1 0.1 0.1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.03" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.06 0.08 0.04"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 0.03"/>
+      <inertia ixx="0.0002" iyy="0.0002" izz="0.0001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+
+  <joint name="mycobot_gripper_joint" type="fixed">
+    <parent link="mycobot_link2"/>
+    <child link="mycobot_gripper"/>
+    <origin xyz="0 0 0.15" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Gazebo-specific tags for arm visibility -->
+  <gazebo reference="mycobot_base">
+    <material>Gazebo/Grey</material>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+  </gazebo>
+
+  <gazebo reference="mycobot_link1">
+    <material>Gazebo/Blue</material>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+  </gazebo>
+
+  <gazebo reference="mycobot_link2">
+    <material>Gazebo/Blue</material>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+  </gazebo>
+
+  <gazebo reference="mycobot_gripper">
+    <material>Gazebo/Black</material>
+    <mu1>0.5</mu1>
+    <mu2>0.5</mu2>
+  </gazebo>
+
+</robot>
