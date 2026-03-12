@@ -1,0 +1,30 @@
+# ============================================
+# ROS2 Setup for Leo Rover (NUC)
+# Add these lines to ~/.bashrc
+# ============================================
+
+# Source ROS2 Jazzy
+source /opt/ros/jazzy/setup.bash
+
+# Source workspace
+source ~/leo_ws/install/setup.bash
+
+# ROS Domain ID (must match Raspberry Pi)
+export ROS_DOMAIN_ID=0
+
+# ROS Localhost Only (set to 0 for network communication)
+export ROS_LOCALHOST_ONLY=0
+
+# Optional: Colored output
+export RCUTILS_COLORIZED_OUTPUT=1
+
+# Optional: Aliases
+alias leo-ssh='ssh pi@10.0.0.1'
+alias leo-topics='ros2 topic list'
+alias leo-nodes='ros2 node list'
+alias leo-check='ros2 topic hz /odom && ros2 topic hz /scan'
+alias nav2-start='ros2 run leo_lidar_sim start_nav2.sh'
+
+echo "Leo Rover ROS2 Environment Loaded!"
+echo "Pi via Ethernet: 10.0.0.1"
+echo "Domain ID: $ROS_DOMAIN_ID"
