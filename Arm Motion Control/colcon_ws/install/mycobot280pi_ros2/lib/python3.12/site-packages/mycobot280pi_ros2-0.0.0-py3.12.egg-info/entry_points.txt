@@ -1,0 +1,2 @@
+[console_scripts]
+sync_plan = mycobot280pi_ros2.sync_plan:main

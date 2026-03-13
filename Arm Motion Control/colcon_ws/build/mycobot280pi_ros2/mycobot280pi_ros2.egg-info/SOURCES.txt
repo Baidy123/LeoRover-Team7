@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/PKG-INFO
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/SOURCES.txt
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/dependency_links.txt
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/entry_points.txt
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/requires.txt
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/top_level.txt
+../../build/mycobot280pi_ros2/mycobot280pi_ros2.egg-info/zip-safe
+mycobot280pi_ros2/__init__.py
+mycobot280pi_ros2/sync_plan.py
+resource/mycobot280pi_ros2
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
