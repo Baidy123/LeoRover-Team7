@@ -1,0 +1,12 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o[0m
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:173:24:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KMTCTaskNode::doTask(const rclcpp::Logger&)[m[K’
+  173 |   [01;31m[Kmtc_task_node->doTask(logger)[m[K;
+      |   [01;31m[K~~~~~~~~~~~~~~~~~~~~~^~~~~~~~[m[K
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:74:6:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Kvoid MTCTaskNode::[01;32m[KdoTask[m[K()[m[K’
+   74 | void [01;36m[KMTCTaskNode[m[K::doTask()
+      |      [01;36m[K^~~~~~~~~~~[m[K
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:74:6:[m[K [01;36m[Knote: [m[K  candidate expects 0 arguments, 1 provided
+gmake[2]: *** [CMakeFiles/mtc_node.dir/build.make:76: CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mtc_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

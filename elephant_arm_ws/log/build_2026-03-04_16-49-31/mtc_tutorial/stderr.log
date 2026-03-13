@@ -1,0 +1,11 @@
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:[m[K In function ‘[01m[Kint[01;32m[K main[m[K(int, char**)[m[K’:
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:152:3:[m[K [01;31m[Kerror: [m[K‘[01m[KRCLCPP_LOGGER[m[K’ was not declared in this scope; did you mean ‘[01m[KRCLCPP_LOCAL[m[K’?
+  152 |   [01;31m[KRCLCPP_LOGGER[m[K("Main init");
+      |   [01;31m[K^~~~~~~~~~~~~[m[K
+      |   [32m[KRCLCPP_LOCAL[m[K
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:166:3:[m[K [01;31m[Kerror: [m[K‘[01m[KRCLCPP[m[K’ was not declared in this scope
+  166 |   [01;31m[KRCLCPP[m[K("Setup planning scene");
+      |   [01;31m[K^~~~~~[m[K
+gmake[2]: *** [CMakeFiles/mtc_node.dir/build.make:76: CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mtc_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

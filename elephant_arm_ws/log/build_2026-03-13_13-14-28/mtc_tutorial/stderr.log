@@ -1,0 +1,7 @@
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:[m[K In member function ‘[01m[Kmoveit::task_constructor::Task MTCTaskNode::[01;32m[KcreateTask[m[K()[m[K’:
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:201:37:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KEigen::AngleAxisd[m[K’ {aka ‘[01m[KEigen::AngleAxis<double>[m[K’} to non-scalar type ‘[01m[KEigen::Quaterniond[m[K’ {aka ‘[01m[KEigen::Quaternion<double>[m[K’} requested
+  201 |       Eigen::Quaterniond q = Eigen::[01;31m[KAngleAxisd(M_PI, Eigen::Vector3d::UnitY())[m[K;
+      |                                     [01;31m[K^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/mtc_node.dir/build.make:76: CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mtc_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
