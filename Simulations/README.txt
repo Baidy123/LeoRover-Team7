@@ -3,6 +3,9 @@ Final code terminal:
 source ~/leo_ws/install/setup.bash
 ros2 launch leo_lidar_sim complete_system.launch.py
 
+(updated workspace with bars):  ros2 launch leo_lidar_sim complete_system_with_pillars.launch.py
+
+
 
 control the robot:
 
