@@ -1,0 +1,339 @@
+[0.151s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--executor', 'sequential', '--parallel-workers', '1', '--packages-select', 'moveit_task_constructor_msgs']
+[0.151s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='sequential', parallel_workers=1, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['moveit_task_constructor_msgs'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x742ea44fe030>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x742ea44fddc0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x742ea44fddc0>>, mixin_verb=('build',))
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.199s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.199s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws'
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.199s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.200s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) by extension 'ignore'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/build) ignored
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extensions ['ignore', 'ignore_ament_install']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extension 'ignore'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extension 'ignore_ament_install'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extensions ['colcon_pkg']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extension 'colcon_pkg'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extensions ['colcon_meta']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extension 'colcon_meta'
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extensions ['ros']
+[0.234s] Level 1:colcon.colcon_core.package_identification:_identify(src/hello_moveit) by extension 'ros'
+[0.238s] DEBUG:colcon.colcon_core.package_identification:Package 'src/hello_moveit' with type 'ros.ament_cmake' and name 'hello_moveit'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/install) ignored
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/log) ignored
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'ignore_ament_install'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['colcon_pkg']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'colcon_pkg'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['colcon_meta']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'colcon_meta'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['ros']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'ros'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['cmake', 'python']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'cmake'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'python'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extensions ['python_setup_py']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor) by extension 'python_setup_py'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extensions ['ignore', 'ignore_ament_install']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extension 'ignore'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extension 'ignore_ament_install'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extensions ['colcon_pkg']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extension 'colcon_pkg'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extensions ['colcon_meta']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extension 'colcon_meta'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extensions ['ros']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/capabilities) by extension 'ros'
+[0.240s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/capabilities' with type 'ros.ament_cmake' and name 'moveit_task_constructor_capabilities'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extensions ['ignore', 'ignore_ament_install']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extension 'ignore'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extension 'ignore_ament_install'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extensions ['colcon_pkg']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extension 'colcon_pkg'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extensions ['colcon_meta']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extension 'colcon_meta'
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extensions ['ros']
+[0.241s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/core) by extension 'ros'
+[0.242s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/core' with type 'ros.ament_cmake' and name 'moveit_task_constructor_core'
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extensions ['ignore', 'ignore_ament_install']
+[0.242s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extension 'ignore'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extension 'ignore_ament_install'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extensions ['colcon_pkg']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extension 'colcon_pkg'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extensions ['colcon_meta']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extension 'colcon_meta'
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extensions ['ros']
+[0.243s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/demo) by extension 'ros'
+[0.244s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/demo' with type 'ros.ament_cmake' and name 'moveit_task_constructor_demo'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extensions ['ignore', 'ignore_ament_install']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extension 'ignore'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extension 'ignore_ament_install'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extensions ['colcon_pkg']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extension 'colcon_pkg'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extensions ['colcon_meta']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extension 'colcon_meta'
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extensions ['ros']
+[0.244s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/msgs) by extension 'ros'
+[0.245s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/msgs' with type 'ros.ament_cmake' and name 'moveit_task_constructor_msgs'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extensions ['ignore', 'ignore_ament_install']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extension 'ignore'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extension 'ignore_ament_install'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extensions ['colcon_pkg']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extension 'colcon_pkg'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extensions ['colcon_meta']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extension 'colcon_meta'
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extensions ['ros']
+[0.245s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/rviz_marker_tools) by extension 'ros'
+[0.246s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/rviz_marker_tools' with type 'ros.ament_cmake' and name 'rviz_marker_tools'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extensions ['ignore', 'ignore_ament_install']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extension 'ignore'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extension 'ignore_ament_install'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extensions ['colcon_pkg']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extension 'colcon_pkg'
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extensions ['colcon_meta']
+[0.246s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extension 'colcon_meta'
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extensions ['ros']
+[0.247s] Level 1:colcon.colcon_core.package_identification:_identify(src/moveit_task_constructor/visualization) by extension 'ros'
+[0.248s] DEBUG:colcon.colcon_core.package_identification:Package 'src/moveit_task_constructor/visualization' with type 'ros.ament_cmake' and name 'moveit_task_constructor_visualization'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extensions ['ignore', 'ignore_ament_install']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extension 'ignore'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extension 'ignore_ament_install'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extensions ['colcon_pkg']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extension 'colcon_pkg'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extensions ['colcon_meta']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extension 'colcon_meta'
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extensions ['ros']
+[0.248s] Level 1:colcon.colcon_core.package_identification:_identify(src/mtc_tutorial) by extension 'ros'
+[0.249s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mtc_tutorial' with type 'ros.ament_cmake' and name 'mtc_tutorial'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'ignore'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'ignore_ament_install'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['colcon_pkg']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'colcon_pkg'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['colcon_meta']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'colcon_meta'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['ros']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'ros'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['cmake', 'python']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'cmake'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'python'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extensions ['python_setup_py']
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2) by extension 'python_setup_py'
+[0.249s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extensions ['ignore', 'ignore_ament_install']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extension 'ignore'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extension 'ignore_ament_install'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extensions ['colcon_pkg']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extension 'colcon_pkg'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extensions ['colcon_meta']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extension 'colcon_meta'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extensions ['ros']
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_bringup) by extension 'ros'
+[0.250s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mycobot_ros2/mycobot_bringup' with type 'ros.ament_cmake' and name 'mycobot_bringup'
+[0.250s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extensions ['ignore', 'ignore_ament_install']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extension 'ignore'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extension 'ignore_ament_install'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extensions ['colcon_pkg']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extension 'colcon_pkg'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extensions ['colcon_meta']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extension 'colcon_meta'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extensions ['ros']
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_description) by extension 'ros'
+[0.251s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mycobot_ros2/mycobot_description' with type 'ros.ament_cmake' and name 'mycobot_description'
+[0.251s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extensions ['ignore', 'ignore_ament_install']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extension 'ignore'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extension 'ignore_ament_install'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extensions ['colcon_pkg']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extension 'colcon_pkg'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extensions ['colcon_meta']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extension 'colcon_meta'
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extensions ['ros']
+[0.252s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_gazebo) by extension 'ros'
+[0.253s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mycobot_ros2/mycobot_gazebo' with type 'ros.ament_cmake' and name 'mycobot_gazebo'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extensions ['ignore', 'ignore_ament_install']
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extension 'ignore'
+[0.253s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extension 'ignore_ament_install'
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extensions ['colcon_pkg']
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extension 'colcon_pkg'
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extensions ['colcon_meta']
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extension 'colcon_meta'
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extensions ['ros']
+[0.254s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_moveit_config) by extension 'ros'
+[0.255s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mycobot_ros2/mycobot_moveit_config' with type 'ros.ament_cmake' and name 'mycobot_moveit_config'
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extensions ['ignore', 'ignore_ament_install']
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extension 'ignore'
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extension 'ignore_ament_install'
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extensions ['colcon_pkg']
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extension 'colcon_pkg'
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extensions ['colcon_meta']
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extension 'colcon_meta'
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extensions ['ros']
+[0.255s] Level 1:colcon.colcon_core.package_identification:_identify(src/mycobot_ros2/mycobot_ros2) by extension 'ros'
+[0.256s] DEBUG:colcon.colcon_core.package_identification:Package 'src/mycobot_ros2/mycobot_ros2' with type 'ros.ament_cmake' and name 'mycobot_ros2'
+[0.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.256s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'hello_moveit' in 'src/hello_moveit'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mycobot_bringup' in 'src/mycobot_ros2/mycobot_bringup'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mycobot_description' in 'src/mycobot_ros2/mycobot_description'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mycobot_gazebo' in 'src/mycobot_ros2/mycobot_gazebo'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mycobot_moveit_config' in 'src/mycobot_ros2/mycobot_moveit_config'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'rviz_marker_tools' in 'src/moveit_task_constructor/rviz_marker_tools'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'moveit_task_constructor_core' in 'src/moveit_task_constructor/core'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mycobot_ros2' in 'src/mycobot_ros2/mycobot_ros2'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'moveit_task_constructor_capabilities' in 'src/moveit_task_constructor/capabilities'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'moveit_task_constructor_visualization' in 'src/moveit_task_constructor/visualization'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'mtc_tutorial' in 'src/mtc_tutorial'
+[0.283s] INFO:colcon.colcon_core.package_selection:Skipping not selected package 'moveit_task_constructor_demo' in 'src/moveit_task_constructor/demo'
+[0.284s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.284s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.289s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 13 installed packages in /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install
+[0.290s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 14 installed packages in /home/student36/ros2_tutorial_workspace/install
+[0.292s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 76 installed packages in /home/student36/ws_moveit/install
+[0.293s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 1 installed packages in /home/student36/rplidar_ws/install
+[0.294s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 2 installed packages in /home/student36/elephant_arm_ws/install
+[0.296s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 460 installed packages in /opt/ros/jazzy
+[0.299s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.387s] WARNING:colcon.colcon_core.package_selection:Some selected packages are already built in one or more underlay workspaces:
+	'moveit_task_constructor_msgs' is in: /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs, /home/student36/ws_moveit/install/moveit_task_constructor_msgs
+If a package in a merged underlay workspace is overridden and it installs headers, then all packages in the overlay must sort their include directories by workspace order. Failure to do so may result in build failures or undefined behavior at run time.
+If the overridden package is used by another package in any underlay, then the overriding package in the overlay must be API and ABI compatible or undefined behavior at run time may occur.
+
+If you understand the risks and want to override a package anyways, add the following to the command line:
+	--allow-overriding moveit_task_constructor_msgs
+
+This may be promoted to an error in a future release of colcon-override-check.
+[0.389s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_args' from command line to 'None'
+[0.389s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_target' from command line to 'None'
+[0.389s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.389s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_clean_cache' from command line to 'False'
+[0.390s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_clean_first' from command line to 'False'
+[0.390s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'cmake_force_configure' from command line to 'False'
+[0.390s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'ament_cmake_args' from command line to 'None'
+[0.390s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'catkin_cmake_args' from command line to 'None'
+[0.390s] Level 5:colcon.colcon_core.verb:set package 'moveit_task_constructor_msgs' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.390s] DEBUG:colcon.colcon_core.verb:Building package 'moveit_task_constructor_msgs' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs', 'merge_install': False, 'path': '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/moveit_task_constructor/msgs', 'symlink_install': False, 'test_result_base': None}
+[0.390s] INFO:colcon.colcon_core.executor:Executing jobs using 'sequential' executor
+[0.391s] DEBUG:colcon.colcon_core.executor.sequential:run_until_complete 'moveit_task_constructor_msgs'
+[0.391s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/moveit_task_constructor/msgs' with build type 'ament_cmake'
+[0.392s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/moveit_task_constructor/msgs'
+[0.400s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.400s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.400s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.443s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs -- -j12 -l12
+[16.646s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs -- -j12 -l12
+[16.690s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs
+[17.028s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(moveit_task_constructor_msgs)
+[17.030s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/student36/ros2_tutorial_workspace/install/the_simplest_python_package:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_node:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_library:/home/student36/ros2_tutorial_workspace/install/python_package_with_a_library:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_services:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_the_actions:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_tf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_parameters_and_launch_files:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nottf2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_nav2:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_messages:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_geometry_msgs:/home/student36/ros2_tutorial_workspace/install/python_package_that_uses_gazebo:/home/student36/ws_moveit/install/moveit_configs_utils:/home/student36/elephant_arm_ws/install/mycobot_description:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/build/moveit_task_constructor_msgs
+[17.036s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs' for CMake module files
+[17.038s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs' for CMake config files
+[17.041s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'cmake_prefix_path')
+[17.042s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.ps1'
+[17.044s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.dsv'
+[17.046s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.sh'
+[17.047s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib'
+[17.048s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'ld_library_path_lib')
+[17.048s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.ps1'
+[17.049s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.dsv'
+[17.050s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.sh'
+[17.052s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/bin'
+[17.052s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib/pkgconfig/moveit_task_constructor_msgs.pc'
+[17.052s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib/python3.12/site-packages'
+[17.053s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'pythonpath')
+[17.053s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.ps1'
+[17.054s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.dsv'
+[17.055s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.sh'
+[17.057s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/bin'
+[17.058s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.ps1'
+[17.060s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.dsv'
+[17.061s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.sh'
+[17.062s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.bash'
+[17.064s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.zsh'
+[17.065s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/colcon-core/packages/moveit_task_constructor_msgs)
+[17.066s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(moveit_task_constructor_msgs)
+[17.068s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs' for CMake module files
+[17.088s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs' for CMake config files
+[17.091s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'cmake_prefix_path')
+[17.091s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.ps1'
+[17.093s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.dsv'
+[17.093s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/cmake_prefix_path.sh'
+[17.095s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib'
+[17.095s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'ld_library_path_lib')
+[17.095s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.ps1'
+[17.096s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.dsv'
+[17.096s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/ld_library_path_lib.sh'
+[17.097s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/bin'
+[17.097s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib/pkgconfig/moveit_task_constructor_msgs.pc'
+[17.097s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/lib/python3.12/site-packages'
+[17.098s] Level 1:colcon.colcon_core.shell:create_environment_hook('moveit_task_constructor_msgs', 'pythonpath')
+[17.098s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.ps1'
+[17.098s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.dsv'
+[17.099s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/hook/pythonpath.sh'
+[17.100s] Level 1:colcon.colcon_core.environment:checking '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/bin'
+[17.100s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.ps1'
+[17.101s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.dsv'
+[17.102s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.sh'
+[17.102s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.bash'
+[17.103s] INFO:colcon.colcon_core.shell:Creating package script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/moveit_task_constructor_msgs/package.zsh'
+[17.104s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/moveit_task_constructor_msgs/share/colcon-core/packages/moveit_task_constructor_msgs)
+[17.104s] DEBUG:colcon.colcon_core.executor.sequential:run_until_complete 'moveit_task_constructor_msgs' finished with '0'
+[17.105s] DEBUG:colcon.colcon_core.executor.sequential:closing loop
+[17.106s] DEBUG:colcon.colcon_core.executor.sequential:loop closed
+[17.106s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[17.119s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[17.119s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[17.119s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[17.147s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[17.148s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/local_setup.ps1'
+[17.149s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/_local_setup_util_ps1.py'
+[17.151s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/setup.ps1'
+[17.159s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/local_setup.sh'
+[17.161s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/_local_setup_util_sh.py'
+[17.162s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/setup.sh'
+[17.180s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/local_setup.bash'
+[17.185s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/setup.bash'
+[17.193s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/local_setup.zsh'
+[17.194s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/install/setup.zsh'

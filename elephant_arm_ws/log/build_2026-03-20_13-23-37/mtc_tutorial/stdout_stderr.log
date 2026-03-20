@@ -1,0 +1,13 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o[0m
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:[m[K In member function ‘[01m[Kmoveit::task_constructor::Task MTCTaskNode::[01;32m[KcreateTask[m[K()[m[K’:
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:261:26:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass moveit::task_constructor::stages::Connect[m[K’ has no member named ‘[01m[KsetTimout[m[K’; did you mean ‘[01m[KsetTimeout[m[K’?
+  261 |     stage_move_to_place->[01;31m[KsetTimout[m[K(5.0);
+      |                          [01;31m[K^~~~~~~~~[m[K
+      |                          [32m[KsetTimeout[m[K
+[01m[K/home/student36/RoboticsDesignProject/Git-repos/LeoRover-Team7/elephant_arm_ws/src/mtc_tutorial/src/mtc_node.cpp:273:27:[m[K [01;31m[Kerror: [m[K‘[01m[Kclass moveit::task_constructor::PropertyMap[m[K’ has no member named ‘[01m[KconfigureInitFrpm[m[K’; did you mean ‘[01m[KconfigureInitFrom[m[K’?
+  273 |       stage->properties().[01;31m[KconfigureInitFrpm[m[K(mtc::Stage::PARENT);
+      |                           [01;31m[K^~~~~~~~~~~~~~~~~[m[K
+      |                           [32m[KconfigureInitFrom[m[K
+gmake[2]: *** [CMakeFiles/mtc_node.dir/build.make:76: CMakeFiles/mtc_node.dir/src/mtc_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/mtc_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

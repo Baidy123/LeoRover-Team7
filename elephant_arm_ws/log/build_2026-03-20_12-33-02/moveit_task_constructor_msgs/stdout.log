@@ -1,0 +1,18 @@
+[  1%] Built target moveit_task_constructor_msgs__rosidl_generator_type_description
+[  1%] Built target ament_cmake_python_copy_moveit_task_constructor_msgs
+[ 27%] Built target moveit_task_constructor_msgs__rosidl_generator_c
+running egg_info
+writing moveit_task_constructor_msgs.egg-info/PKG-INFO
+writing dependency_links to moveit_task_constructor_msgs.egg-info/dependency_links.txt
+writing top-level names to moveit_task_constructor_msgs.egg-info/top_level.txt
+reading manifest file 'moveit_task_constructor_msgs.egg-info/SOURCES.txt'
+writing manifest file 'moveit_task_constructor_msgs.egg-info/SOURCES.txt'
+[ 27%] Built target ament_cmake_python_build_moveit_task_constructor_msgs_egg
+[ 37%] Built target moveit_task_constructor_msgs__rosidl_typesupport_c
+[ 47%] Built target moveit_task_constructor_msgs__rosidl_typesupport_introspection_c
+[ 48%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/msg/detail/property__type_support_c.cpp.o[0m
+[ 49%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/srv/detail/get_solution__type_support_c.cpp.o[0m
+[ 49%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/action/detail/execute_task_solution__type_support_c.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/msg/detail/trajectory_execution_info__type_support_c.cpp.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/msg/detail/task_statistics__type_support_c.cpp.o[0m
+[ 51%] [32mBuilding CXX object CMakeFiles/moveit_task_constructor_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/moveit_task_constructor_msgs/msg/detail/task_description__type_support_c.cpp.o[0m
