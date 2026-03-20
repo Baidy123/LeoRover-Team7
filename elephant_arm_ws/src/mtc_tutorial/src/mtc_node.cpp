@@ -198,9 +198,6 @@ mtc::Task MTCTaskNode::createTask()
       stage->setMonitoredStage(current_state_ptr);
 
       Eigen::Isometry3d grasp_frame_transform;
-      // Eigen::Quaterniond q = Eigen::AngleAxisd(M_PI/2, Eigen::Vector3d::UnitX()) *
-      //                         Eigen::AngleAxisd(M_PI/2, Eigen::Vector3d::UnitY()) *
-      //                         Eigen::AngleAxisd(M_PI/2, Eigen::Vector3d::UnitZ());
       Eigen::Quaterniond q(Eigen::AngleAxisd(M_PI, Eigen::Vector3d::UnitY()));
       grasp_frame_transform.linear() = q.matrix();
       grasp_frame_transform.translation().z() = 0.08;
@@ -209,9 +206,6 @@ mtc::Task MTCTaskNode::createTask()
       wrapper->setMaxIKSolutions(20);
       wrapper->setMinSolutionDistance(1.0);
       wrapper->setIKFrame(grasp_frame_transform, hand_frame);
-      // wrapper->setIgnoreCollisions(true);
-      // wrapper->setProperty("group", arm_group_name);
-      // wrapper->setProperty("eef", hand_group_name);
       wrapper->properties().configureInitFrom(mtc::Stage::PARENT, {"eef", "group"});
       wrapper->properties().configureInitFrom(mtc::Stage::INTERFACE, {"target_pose"});
       grasp->insert(std::move(wrapper));
@@ -222,7 +216,6 @@ mtc::Task MTCTaskNode::createTask()
       auto stage = std::make_unique<mtc::stages::MoveTo>("close hand", interpolation_planner);
       stage->setGroup(hand_group_name);
       stage->setGoal("half_closed");
-      // stage->restrictDirection(mtc::stages::MoveTo::FORWARD)
       grasp->insert(std::move(stage));
     }
 
@@ -293,14 +286,6 @@ mtc::Task MTCTaskNode::createTask()
       wrapper->properties().configureInitFrom(mtc::Stage::PARENT, {"eef", "group"});
       wrapper->properties().configureInitFrom(mtc::Stage::INTERFACE, {"target_pose"});
       place->insert(std::move(wrapper));
-
-      // auto wrapper = std::make_unique<mtc::stages::ComputeIK>("place pose IK", std::move(stage));
-      // wrapper->setMaxIKSolutions(2);
-      // wrapper->setMinSolutionDistance(1.0);
-      // wrapper->setIKFrame("object");
-      // wrapper->properties().configureInitFrom(mtc::Stage::PARENT, {"eef", "group"});
-      // wrapper->properties().configureInitFrom(mtc::Stage::INTERFACE, {"target_pose"});
-      // place->insert(std::move(wrapper));
     }
 
     // Open hand
