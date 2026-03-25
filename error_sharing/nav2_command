@@ -1,0 +1,4 @@
+ros2 launch nav2_bringup navigation_launch.py \
+  use_sim_time:=false \
+  params_file:=$(ros2 pkg prefix leo_test)/share/leo_test/config/nav2_params_real.yaml \
+  odom_topic:=/merged_odom
