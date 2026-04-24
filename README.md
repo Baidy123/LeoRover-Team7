@@ -1,3 +1,122 @@
+
+# Project Overview
+
+This project implements a complete mobile manipulation system capable of autonomously detecting a target object, navigating toward it, and transporting it to a designated drop-off box. The robot integrates perception, SLAM, navigation control, manipulation, and low-level actuation into a unified framework.
+
+The following sections provide detailed documentation for each subsystem within the project, including the Perception System, SLAM module, Navigation module and Manipulator Control, wihch describe their roles, algorithms, and implementation details.
+
+
+
+---
+# SLAM and Navigation
+This repository contains the implementation of **SLAM toolbox** for the Leo Rover v1.8 using ROS2 Jazzy on a NUC and Raspberry Pi setup.
+
+---
+## Overview
+
+- using **slam_toolbox** to run 2D SLAM
+- integrating **EKF** from robot_localization
+- using slam_launch.py
+- provides 'odom -> base_link -> laser' TF tree
+- Publishing '/map' , '/odom', '/scan' and 'tf' frames
+- integrated Lidar with the NUC
+- located in 'slam/'
+  
+---
+## Requirements
+
+- ROS2 Jazzy
+- slam_toolbox
+- robot_localization
+- Python 3.10+
+- Nav2 stack
+
+
+---
+## Run SLAM
+```python
+ros2 launch slam_system slam_launch.py
+```
+
+
+---
+## Installations
+
+The SLAM and Navigation will be done based on the topics received from RPLiDAR A2M12.
+
+Clone the lidar package: 
+```python
+git clone -b ros2 https://github.com/Slamtec/rplidar_ros.git
+```
+
+Clone the Leo Rover ROS2 package
+```python
+git clone https://github.com/LeoRover/leo_robot-ros2.git
+```
+
+
+---
+## File Structure
+
+
+### leo_nav2
+
+### launch folder: 
+
+**ekf_launch.py ->** Used for robot localization by starting the Extended Kalman Filter
+               
+               
+**slam_launch.py ->** Starts the slam toolbox node
+
+
+**nav2_launch.py ->** Starts the entire Navigation2 stack
+
+               
+### config folder: 
+
+**ekf.yaml ->** Defines the configuration for EKF
+
+
+**slam_toolbox.yaml ->** Configure the file for slam_toolbox
+
+
+**nav2_params.yaml ->** Configure the Nav2 System
+
+---
+## Important
+
+---
+### Building the Workspace
+```bash
+colcon build --symlink-install \
+source install/setup.bash
+```
+
+---
+### Launching the LIDAR with map
+```python
+ros2 launch rplidar_ros view_rplidar_a2m12_launch.py
+```
+---
+### Launch EKF (Odometry Filter)
+```python
+ros2 launch leo_nav2 ekf_launch.py
+```
+
+---
+### Launch SLAM Toolbox
+```python
+ros2 launch leo_nav2 slam_launch.py
+```
+
+---
+### Launch Navigation
+```python
+ros2 launch leo_nav2 nav2_launch.py
+```
+
+
+---
 # Perception System
 
 This repository provides a Python module for real-time detection of colored blocks and drop-off boxes using an Intel RealSense depth camera (or Gazebo simulation) and OpenCV. It serves as the perception front-end of a mobile manipulation system, providing 3D target positions, depth-based size classification, gripper orientation hints, and drop-off box localization.
@@ -226,4 +345,45 @@ class DetectionSystem:
     },
     ...
 ]
+
 ```
+# Arm Motion Control
+This repository contains the Motion Planning and control for the MyCobot 280-pi planned on A NUC and executed on the arm using serial connection
+## Overview
+- Uses RViz2 to visualise mycobot 280-pi
+- Uses Moveit2 for controllers and motion planning
+- Plans motion on NUC
+- Serial connection sync node ran on mycobot 280_pi
+## Requirements
+- moveit_config_utils
+- ROS2 jazzy
+- RViz2
+- Python 3.8+
+### Building the workspace
+```python
+colcon build
+source install/setup.bash
+```
+## To Launch Motion Planning
+### Run on external processor (NUC)
+```python
+ros2 launch mycobot_moveit_config move_group.launch.py
+```
+## To Sync Motion Planning 
+### Run on MyCobot 280-pi
+```python
+ros2 run mycobot_280_moveit2_control sync_plan.py
+```
+
+## File Structure
+### NUC_ros2
+**mycobot_description ->** Contains MyCobot 280-pi URDF description
+
+
+### mycobot_ros2
+**mycobot_280/mycobot_280_moveit2_control ->** Contains arm controller nodes
+
+**mycobot_description ->** Contains MyCobot 280-pi URDF description
+
+**mycobot_communication ->** Contains additional communication nodes for ROS2 topics and services
+
