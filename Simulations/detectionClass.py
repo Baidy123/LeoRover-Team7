@@ -398,7 +398,7 @@ class DetectionSystem:
         
         return all_objects
     
-    def detect_block_orientation(self, gripper_max_width=0.05):
+    def detect_block_orientation(self, gripper_max_width=0.04):
         """
         Assumes blocks are placed only horizontally or vertically.
         Decides which direction the gripper should close from.
@@ -567,7 +567,7 @@ class DetectionSystem:
         color_name = self.col_array[self.current_index]
         print(f"\n=== Picking [{color_name}] block as grasp target ===")
         
-        blocks = self.detect_block_orientation(gripper_max_width=0.05)
+        blocks = self.detect_block_orientation(gripper_max_width=0.04)
         
         if not blocks:
             print("  -> No block detected")
