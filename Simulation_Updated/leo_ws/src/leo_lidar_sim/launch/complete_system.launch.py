@@ -1,13 +1,24 @@
 import os
 from launch import LaunchDescription
-from launch.actions import ExecuteProcess, TimerAction
-from launch.substitutions import Command
+from launch.actions import DeclareLaunchArgument, ExecuteProcess, TimerAction
+from launch.substitutions import Command, LaunchConfiguration
 from launch_ros.actions import Node
 from launch_ros.parameter_descriptions import ParameterValue
 from ament_index_python.packages import get_package_share_directory
 
 
 def generate_launch_description():
+    # Which box to pick. Color is derived from the name.
+    target_box_arg = DeclareLaunchArgument(
+        'target_box', default_value='red_box_2',
+        description='Box to pick up (red_box_1, red_box_2, blue_box_1, '
+                    'blue_box_2, green_box_1, green_box_2). The matching '
+                    'colored corner basket is selected automatically.')
+    # Set to 'false' to launch the simulation without auto-running the mission
+    autostart_mission_arg = DeclareLaunchArgument(
+        'autostart_mission', default_value='true',
+        description='If true, autonomous_mission node is launched after '
+                    'everything is up and starts driving immediately.')
     
     # Package paths
     pkg_leo_lidar_sim = get_package_share_directory('leo_lidar_sim')
@@ -267,8 +278,46 @@ def generate_launch_description():
             )
         ]
     )
-    
+
+    # 9. Arm controller — starts at 12s, after Gazebo and bridges are alive.
+    # On startup it broadcasts `detach` to all 6 boxes to undo the
+    # gz-sim-detachable-joint-system "starts attached" default.
+    arm_controller_node = TimerAction(
+        period=12.0,
+        actions=[
+            Node(
+                package='leo_lidar_sim',
+                executable='arm_controller.py',
+                name='arm_controller',
+                output='screen',
+                parameters=[{'use_sim_time': True}],
+            )
+        ]
+    )
+
+    # 10. Autonomous mission — starts at 25s so SLAM + Nav2 have time to come up.
+    # User can disable with `autostart_mission:=false` to drive manually.
+    from launch.conditions import IfCondition
+    mission_node = TimerAction(
+        period=25.0,
+        actions=[
+            Node(
+                package='leo_lidar_sim',
+                executable='autonomous_mission.py',
+                name='autonomous_mission',
+                output='screen',
+                condition=IfCondition(LaunchConfiguration('autostart_mission')),
+                parameters=[{
+                    'use_sim_time': True,
+                    'target_box':   LaunchConfiguration('target_box'),
+                }],
+            )
+        ]
+    )
+
     return LaunchDescription([
+        target_box_arg,
+        autostart_mission_arg,
         robot_state_publisher,
         gazebo,
         spawn_leo,
@@ -281,11 +330,13 @@ def generate_launch_description():
         bridge_odom,
         bridge_scan,
         bridge_joint_states,
-        bridge_depth_image,      # new
-        bridge_depth,            # new
-        bridge_depth_points,     # new
+        bridge_depth_image,
+        bridge_depth,
+        bridge_depth_points,
         odom_to_tf,
         lidar_tf,
         slam,
-        rviz
+        rviz,
+        arm_controller_node,
+        mission_node,
     ])

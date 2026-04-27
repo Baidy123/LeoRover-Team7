@@ -57,6 +57,9 @@ BOX_POSITIONS = {
     'green_box_2': (0.7,  1.5,  0.675),   # on obstacle_7
 }
 
+# Names must match the <child_model> entries in the URDF DetachableJoint plugins
+ALL_BOX_NAMES = list(BOX_POSITIONS.keys())
+
 # ── Basket positions ──────────────────────────────────────────────────────────
 BASKET_POSITIONS = {
     'red':   (2.0,  2.0,  0.5),
@@ -96,11 +99,20 @@ class ArmController(Node):
         self._busy        = False
         self._target_box  = None   # set by 'pickup:<box_name>' command
         self._target_drop = None   # set by 'place:<basket_name>' command
+        self._held_box    = None   # name of currently grasped box, or None
 
         self.get_logger().info('ArmController IK ready. Commands:')
         self.get_logger().info('  pickup:<box_name>  e.g. pickup:red_box_1')
         self.get_logger().info('  place:<basket>     e.g. place:red')
         self.get_logger().info('  home')
+
+        # CRITICAL: gz-sim-detachable-joint-system starts ATTACHED by default.
+        # On sim startup all 6 boxes are rigidly fixed to arm_gripper, which
+        # causes them to teleport / oscillate. Detach everything once at boot
+        # so each box rests on its pedestal until we deliberately attach it.
+        self.create_timer(2.0, self._initial_release_once,
+                          callback_group=self.cb_group)
+        self._initial_release_done = False
 
     # ── Odom ──────────────────────────────────────────────────────────────────
 
@@ -199,6 +211,12 @@ class ArmController(Node):
         self._pub(TOPICS['fr'], -0.02)
         time.sleep(1.5)
 
+        # Rigidly attach the box to arm_gripper (DetachableJoint plugin).
+        # This is what actually makes the gripper "hold" the box in physics.
+        self._attach_box(box_name)
+        self._held_box = box_name
+        time.sleep(0.5)
+
         # Lift
         self._pub(TOPICS['seg2'], seg2 * 0.5)
         self._pub(TOPICS['fore'], fore * 0.3)
@@ -208,7 +226,7 @@ class ArmController(Node):
         # Carry pose — safe for driving
         self._send_pose(CARRY_POSE, CARRY_DELAY)
 
-        self.get_logger().info('[PICKUP] ✅ Complete')
+        self.get_logger().info(f'[PICKUP] ✅ Complete — holding {box_name}')
         self._publish_done(True)
 
     # ── Place sequence ────────────────────────────────────────────────────────
@@ -242,7 +260,16 @@ class ArmController(Node):
         self._pub(TOPICS['wrist'], wrist)
         time.sleep(3.5)
 
-        # Open fingers — release
+        # Detach the held box BEFORE opening fingers — otherwise the rigid
+        # gripper-finger constraint can flick the box across the room when
+        # the prismatic joints suddenly move.
+        if self._held_box is not None:
+            self._detach_box(self._held_box)
+            self.get_logger().info(f'[PLACE] Released {self._held_box}')
+            self._held_box = None
+            time.sleep(0.3)
+
+        # Open fingers
         self._pub(TOPICS['fl'], 0.03)
         self._pub(TOPICS['fr'], 0.03)
         time.sleep(1.5)
@@ -364,6 +391,45 @@ class ArmController(Node):
                 capture_output=True, text=True, timeout=3.0)
         except Exception as e:
             self.get_logger().error(f'pub error: {e}')
+
+    def _pub_empty(self, topic: str):
+        """Publish an empty gz.msgs.Empty message — used for attach/detach."""
+        try:
+            subprocess.run(
+                ['gz', 'topic', '-t', topic,
+                 '-m', 'gz.msgs.Empty',
+                 '-p', ''],
+                capture_output=True, text=True, timeout=3.0)
+        except Exception as e:
+            self.get_logger().error(f'pub_empty error: {e}')
+
+    # ── DetachableJoint control ───────────────────────────────────────────────
+
+    def _attach_box(self, box_name: str):
+        topic = f'/box/{box_name}/attach'
+        self.get_logger().info(f'  -> ATTACH {topic}')
+        self._pub_empty(topic)
+
+    def _detach_box(self, box_name: str):
+        topic = f'/box/{box_name}/detach'
+        self.get_logger().info(f'  -> DETACH {topic}')
+        self._pub_empty(topic)
+
+    def _initial_release_once(self):
+        """
+        Publish detach to every box exactly once after sim is up. The
+        DetachableJoint plugin starts attached by default, which causes all
+        boxes to be glued to the gripper at startup. Detaching here lets them
+        rest on their pedestals until the FSM grabs one deliberately.
+        """
+        if self._initial_release_done:
+            return
+        self._initial_release_done = True
+        self.get_logger().info(
+            'Releasing all boxes from initial attached state...')
+        for name in ALL_BOX_NAMES:
+            self._detach_box(name)
+        self.get_logger().info('Initial release complete.')
 
     def _publish_done(self, success: bool):
         self.done_pub.publish(Bool(data=success))

@@ -29,12 +29,12 @@ from launch_ros.actions import Node
 def generate_launch_description():
 
     # ── Declare arguments ────────────────────────────────────────────────────
+    # NOTE: bin coordinates are now derived from target_box's color, so the
+    # bin_x/bin_y args are no longer needed by the mission node.
     args = [
-        DeclareLaunchArgument('bin_x',          default_value='2.0'),
-        DeclareLaunchArgument('bin_y',          default_value='2.0'),
-        DeclareLaunchArgument('bin_yaw',        default_value='0.0'),
-        DeclareLaunchArgument('home_x',         default_value='0.0'),
-        DeclareLaunchArgument('home_y',         default_value='0.0'),
+        DeclareLaunchArgument('target_box',     default_value='red_box_2'),
+        DeclareLaunchArgument('home_x',         default_value='1.8'),
+        DeclareLaunchArgument('home_y',         default_value='-1.8'),
         DeclareLaunchArgument('home_yaw',       default_value='0.0'),
         DeclareLaunchArgument('target_color',   default_value='red'),
         DeclareLaunchArgument('approach_offset',default_value='0.35'),
@@ -71,15 +71,12 @@ def generate_launch_description():
         name='autonomous_mission',
         output='screen',
         parameters=[{
-            'bin_x':          LaunchConfiguration('bin_x'),
-            'bin_y':          LaunchConfiguration('bin_y'),
-            'bin_yaw':        LaunchConfiguration('bin_yaw'),
+            'target_box':     LaunchConfiguration('target_box'),
             'home_x':         LaunchConfiguration('home_x'),
             'home_y':         LaunchConfiguration('home_y'),
             'home_yaw':       LaunchConfiguration('home_yaw'),
             'approach_offset':LaunchConfiguration('approach_offset'),
             'nav_timeout':    60.0,
-            'arm_timeout':    20.0,
         }],
     )
 
