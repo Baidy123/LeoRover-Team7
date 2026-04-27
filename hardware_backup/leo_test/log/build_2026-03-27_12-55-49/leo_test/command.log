@@ -1,0 +1,4 @@
+Invoking command in '/home/team7/leo_test/build/leo_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/team7/leo_test/build/leo_test -- -j16 -l16
+Invoked command in '/home/team7/leo_test/build/leo_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/team7/leo_test/build/leo_test -- -j16 -l16
+Invoking command in '/home/team7/leo_test/build/leo_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/team7/leo_test/build/leo_test
+Invoked command in '/home/team7/leo_test/build/leo_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/team7/leo_test/build/leo_test

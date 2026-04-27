@@ -1,0 +1,1 @@
+/home/team7/leo_test/build/leo_test/ament_cmake_environment_hooks/local_setup.bash

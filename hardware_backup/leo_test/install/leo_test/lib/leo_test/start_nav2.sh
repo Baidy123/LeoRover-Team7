@@ -1,0 +1,1 @@
+/home/team7/leo_test/scripts/start_nav2.sh

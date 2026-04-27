@@ -1,0 +1,31 @@
+[0.007s] Invoking command in '/home/team7/leo_test/build/leo_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/team7/leo_test/build/leo_test -- -j16 -l16
+[0.036s] Invoked command in '/home/team7/leo_test/build/leo_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --build /home/team7/leo_test/build/leo_test -- -j16 -l16
+[0.043s] Invoking command in '/home/team7/leo_test/build/leo_test': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/team7/leo_test/build/leo_test
+[0.051s] -- Install configuration: ""
+[0.051s] -- Execute custom install script
+[0.051s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/detection_node.py
+[0.051s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/vision_to_navigation.py
+[0.052s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/start_nav2.sh
+[0.052s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/real_robot.launch.py
+[0.052s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/slam_and_nav2.launch.py
+[0.052s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/vision_system.launch.py
+[0.053s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/colour_params.csv
+[0.053s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/nav2_params_real.yaml
+[0.053s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/rviz_config.rviz
+[0.053s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/slam_params_real.yaml
+[0.053s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/package_run_dependencies/leo_test
+[0.054s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/parent_prefix_path/leo_test
+[0.054s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/ament_prefix_path.sh
+[0.054s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/ament_prefix_path.dsv
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/path.sh
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/path.dsv
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.bash
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.sh
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.zsh
+[0.055s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.dsv
+[0.055s] -- Symlinking: /home/team7/leo_test/install/leo_test/share/leo_test/package.dsv
+[0.064s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/packages/leo_test
+[0.064s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/cmake/leo_testConfig.cmake
+[0.064s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/cmake/leo_testConfig-version.cmake
+[0.064s] -- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/package.xml
+[0.066s] Invoked command in '/home/team7/leo_test/build/leo_test' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy DEBUGINFOD_URLS=https://debuginfod.ubuntu.com /usr/bin/cmake --install /home/team7/leo_test/build/leo_test

@@ -1,0 +1,19 @@
+digraph G {
+"base_link" -> "laser"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_footprint" -> "base_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"odom" -> "base_footprint"[label=" Broadcaster: default_authority\nAverage rate: 200.311\nBuffer length: 4.947\nMost recent transform: 1774021713.107187\nOldest transform: 1774021708.159875\n"];
+"base_link" -> "antenna_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "camera_frame"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"camera_frame" -> "camera_optical_frame"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "imu_frame"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "rocker_L_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"base_link" -> "rocker_R_link"[label=" Broadcaster: default_authority\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"rocker_L_link" -> "wheel_FL_link"[label=" Broadcaster: default_authority\nAverage rate: 20.204\nBuffer length: 4.801\nMost recent transform: 1774021713.071846\nOldest transform: 1774021708.270846\n"];
+"rocker_R_link" -> "wheel_FR_link"[label=" Broadcaster: default_authority\nAverage rate: 20.204\nBuffer length: 4.801\nMost recent transform: 1774021713.071846\nOldest transform: 1774021708.270846\n"];
+"rocker_L_link" -> "wheel_RL_link"[label=" Broadcaster: default_authority\nAverage rate: 20.204\nBuffer length: 4.801\nMost recent transform: 1774021713.071846\nOldest transform: 1774021708.270846\n"];
+"rocker_R_link" -> "wheel_RR_link"[label=" Broadcaster: default_authority\nAverage rate: 20.204\nBuffer length: 4.801\nMost recent transform: 1774021713.071846\nOldest transform: 1774021708.270846\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 1774616848.973968"[ shape=plaintext ] ;
+}->"odom";
+}

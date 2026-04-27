@@ -1,0 +1,27 @@
+-- Install configuration: ""
+-- Execute custom install script
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/detection_node.py
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/vision_to_navigation.py
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/lib/leo_test/start_nav2.sh
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/real_robot.launch.py
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/slam_and_nav2.launch.py
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//launch/vision_system.launch.py
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/colour_params.csv
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/nav2_params_real.yaml
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/rviz_config.rviz
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test//config/slam_params_real.yaml
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/package_run_dependencies/leo_test
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/parent_prefix_path/leo_test
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/ament_prefix_path.sh
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/ament_prefix_path.dsv
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/path.sh
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/environment/path.dsv
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.bash
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.sh
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.zsh
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/local_setup.dsv
+-- Symlinking: /home/team7/leo_test/install/leo_test/share/leo_test/package.dsv
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/ament_index/resource_index/packages/leo_test
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/cmake/leo_testConfig.cmake
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/cmake/leo_testConfig-version.cmake
+-- Up-to-date symlink: /home/team7/leo_test/install/leo_test/share/leo_test/package.xml
