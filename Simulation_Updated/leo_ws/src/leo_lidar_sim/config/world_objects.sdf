@@ -1,0 +1,130 @@
+<!--
+  world_objects.sdf
+  =================
+  Paste these <model> blocks inside your existing Gazebo world SDF
+  (inside the <world> tag, after your ground plane / rover spawn).
+
+  The RED BOX is the target the rover must pick up.
+  The BIN is where the rover places it.
+
+  Coordinates are in the map/Gazebo world frame.
+  Adjust x/y/z to match where you want them in your scene.
+
+  IMPORTANT: Make sure bin_x/bin_y in mission_launch.py match
+  the bin model's <pose> below.
+-->
+
+<!-- ════════════════════════════════════════════════════════════════
+     RED BOX  (target object)
+     Placed 2 m ahead of rover's start position
+     ════════════════════════════════════════════════════════════════ -->
+<model name="red_box">
+  <static>false</static>
+  <pose>2.0 0.0 0.05  0 0 0</pose>   <!-- x y z  roll pitch yaw -->
+
+  <link name="box_link">
+    <inertial>
+      <mass>0.2</mass>
+      <inertia>
+        <ixx>0.0001</ixx><ixy>0</ixy><ixz>0</ixz>
+        <iyy>0.0001</iyy><iyz>0</iyz>
+        <izz>0.0001</izz>
+      </inertia>
+    </inertial>
+
+    <collision name="collision">
+      <geometry>
+        <box><size>0.08 0.08 0.08</size></box>
+      </geometry>
+      <surface>
+        <friction>
+          <ode><mu>0.8</mu><mu2>0.8</mu2></ode>
+        </friction>
+      </surface>
+    </collision>
+
+    <visual name="visual">
+      <geometry>
+        <box><size>0.08 0.08 0.08</size></box>
+      </geometry>
+      <material>
+        <ambient>0.8 0.0 0.0 1</ambient>
+        <diffuse>0.9 0.0 0.0 1</diffuse>
+        <specular>0.1 0.1 0.1 1</specular>
+      </material>
+    </visual>
+  </link>
+</model>
+
+
+<!-- ════════════════════════════════════════════════════════════════
+     BIN  (destination — open-top container)
+     Placed at the bin_x / bin_y coordinates used in mission_launch
+     ════════════════════════════════════════════════════════════════ -->
+<model name="bin">
+  <static>true</static>
+  <pose>3.0 2.0 0.0  0 0 0</pose>   <!-- must match bin_x bin_y in launch -->
+
+  <!-- Floor -->
+  <link name="floor">
+    <pose>0 0 0.01  0 0 0</pose>
+    <collision name="col">
+      <geometry><box><size>0.35 0.35 0.02</size></box></geometry>
+    </collision>
+    <visual name="vis">
+      <geometry><box><size>0.35 0.35 0.02</size></box></geometry>
+      <material>
+        <ambient>0.3 0.3 0.8 1</ambient>
+        <diffuse>0.3 0.3 0.9 1</diffuse>
+      </material>
+    </visual>
+  </link>
+
+  <!-- Front wall -->
+  <link name="front_wall">
+    <pose>0 -0.165 0.075  0 0 0</pose>
+    <collision name="col">
+      <geometry><box><size>0.35 0.02 0.15</size></box></geometry>
+    </collision>
+    <visual name="vis">
+      <geometry><box><size>0.35 0.02 0.15</size></box></geometry>
+      <material><ambient>0.3 0.3 0.8 1</ambient><diffuse>0.3 0.3 0.9 1</diffuse></material>
+    </visual>
+  </link>
+
+  <!-- Back wall -->
+  <link name="back_wall">
+    <pose>0 0.165 0.075  0 0 0</pose>
+    <collision name="col">
+      <geometry><box><size>0.35 0.02 0.15</size></box></geometry>
+    </collision>
+    <visual name="vis">
+      <geometry><box><size>0.35 0.02 0.15</size></box></geometry>
+      <material><ambient>0.3 0.3 0.8 1</ambient><diffuse>0.3 0.3 0.9 1</diffuse></material>
+    </visual>
+  </link>
+
+  <!-- Left wall -->
+  <link name="left_wall">
+    <pose>-0.165 0 0.075  0 0 0</pose>
+    <collision name="col">
+      <geometry><box><size>0.02 0.35 0.15</size></box></geometry>
+    </collision>
+    <visual name="vis">
+      <geometry><box><size>0.02 0.35 0.15</size></box></geometry>
+      <material><ambient>0.3 0.3 0.8 1</ambient><diffuse>0.3 0.3 0.9 1</diffuse></material>
+    </visual>
+  </link>
+
+  <!-- Right wall -->
+  <link name="right_wall">
+    <pose>0.165 0 0.075  0 0 0</pose>
+    <collision name="col">
+      <geometry><box><size>0.02 0.35 0.15</size></box></geometry>
+    </collision>
+    <visual name="vis">
+      <geometry><box><size>0.02 0.35 0.15</size></box></geometry>
+      <material><ambient>0.3 0.3 0.8 1</ambient><diffuse>0.3 0.3 0.9 1</diffuse></material>
+    </visual>
+  </link>
+</model>
