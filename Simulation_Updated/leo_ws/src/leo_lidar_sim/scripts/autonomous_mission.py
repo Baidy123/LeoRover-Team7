@@ -296,10 +296,23 @@ class AutonomousMission(Node):
         self.nav_done      = False
         self.nav_succeeded = False
 
-        if not self.nav_client.wait_for_server(timeout_sec=5.0):
-            self.get_logger().error('Nav2 action server not available!')
-            self._set_state(State.FAILED)
-            return
+        # Be patient — the user starts Nav2 in another terminal, and it can
+        # take 30s+ to come up after Gazebo+SLAM. Wait up to 2 minutes,
+        # logging progress every 5s, before declaring failure.
+        deadline = 120.0
+        elapsed  = 0.0
+        step     = 5.0
+        while not self.nav_client.wait_for_server(timeout_sec=step):
+            elapsed += step
+            if elapsed >= deadline:
+                self.get_logger().error(
+                    f'Nav2 action server still unavailable after {deadline}s. '
+                    'Did you run `bash ~/start_nav2_minimal.sh` in another '
+                    'terminal? Aborting mission.')
+                self._set_state(State.FAILED)
+                return
+            self.get_logger().warn(
+                f'Waiting for Nav2 action server... ({elapsed:.0f}s elapsed)')
 
         goal_msg = NavigateToPose.Goal()
         goal_msg.pose = pose

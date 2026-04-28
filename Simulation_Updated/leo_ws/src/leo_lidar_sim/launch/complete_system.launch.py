@@ -279,11 +279,36 @@ def generate_launch_description():
         ]
     )
 
-    # 9. Arm controller — starts at 12s, after Gazebo and bridges are alive.
-    # On startup it broadcasts `detach` to all 6 boxes to undo the
-    # gz-sim-detachable-joint-system "starts attached" default.
+    # 9. EARLY box release — fires at t=6s, right after spawn_leo (t=5s).
+    # The DetachableJoint plugins start ATTACHED by default. With 6 boxes
+    # rigidly fixed to arm_gripper at scattered floor positions, Gazebo's
+    # constraint solver tries to satisfy all 6 simultaneously — yanking the
+    # rover into the air or teleporting boxes around. We MUST detach within
+    # ~1s of the rover spawning, before physics builds up large constraint
+    # forces. Three repeats spaced 0.5s apart for reliability (the gz-sim
+    # subscriber may not be ready on the very first publish).
+    BOX_NAMES = ['red_box_1', 'red_box_2',
+                 'blue_box_1', 'blue_box_2',
+                 'green_box_1', 'green_box_2']
+    early_release_actions = []
+    for repeat in range(3):
+        for name in BOX_NAMES:
+            early_release_actions.append(
+                ExecuteProcess(
+                    cmd=['gz', 'topic', '-t', f'/box/{name}/detach',
+                         '-m', 'gz.msgs.Empty', '-p', ''],
+                    output='log',  # quiet — 18 lines is too much screen spam
+                )
+            )
+    early_release = TimerAction(
+        period=6.0 + 0.5,  # rover spawns at 5s; let it settle ~1.5s then release
+        actions=early_release_actions,
+    )
+
+    # 10. Arm controller — starts at 8s, after early release. Re-broadcasts
+    # detach itself in __init__ as belt-and-suspenders.
     arm_controller_node = TimerAction(
-        period=12.0,
+        period=8.0,
         actions=[
             Node(
                 package='leo_lidar_sim',
@@ -295,11 +320,13 @@ def generate_launch_description():
         ]
     )
 
-    # 10. Autonomous mission — starts at 25s so SLAM + Nav2 have time to come up.
-    # User can disable with `autostart_mission:=false` to drive manually.
+    # 11. Autonomous mission — starts LATE (45s) so the user has time to
+    # `bash ~/start_nav2_minimal.sh` in another terminal and Nav2's
+    # action server is alive before we send the first goal.
+    # Set `autostart_mission:=false` to skip and drive manually with teleop.
     from launch.conditions import IfCondition
     mission_node = TimerAction(
-        period=25.0,
+        period=45.0,
         actions=[
             Node(
                 package='leo_lidar_sim',
@@ -337,6 +364,7 @@ def generate_launch_description():
         lidar_tf,
         slam,
         rviz,
+        early_release,
         arm_controller_node,
         mission_node,
     ])

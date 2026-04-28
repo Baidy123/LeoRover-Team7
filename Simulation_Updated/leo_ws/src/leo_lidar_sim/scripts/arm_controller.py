@@ -107,12 +107,16 @@ class ArmController(Node):
         self.get_logger().info('  home')
 
         # CRITICAL: gz-sim-detachable-joint-system starts ATTACHED by default.
-        # On sim startup all 6 boxes are rigidly fixed to arm_gripper, which
-        # causes them to teleport / oscillate. Detach everything once at boot
-        # so each box rests on its pedestal until we deliberately attach it.
-        self.create_timer(2.0, self._initial_release_once,
-                          callback_group=self.cb_group)
+        # The launch file already broadcasts detach right after rover spawn
+        # via ExecuteProcess. We re-broadcast IMMEDIATELY here as belt-and-
+        # suspenders in case this node was launched standalone, and also at
+        # 1s + 3s in case the gz subscriber wasn't ready on the first try.
+        # Note: _initial_release_once is idempotent (guarded by a flag), but
+        # the flag is reset before each scheduled call so all three rounds
+        # actually publish.
         self._initial_release_done = False
+        self._initial_release_once()
+        self._schedule_repeated_release()
 
     # ── Odom ──────────────────────────────────────────────────────────────────
 
@@ -417,19 +421,35 @@ class ArmController(Node):
 
     def _initial_release_once(self):
         """
-        Publish detach to every box exactly once after sim is up. The
-        DetachableJoint plugin starts attached by default, which causes all
-        boxes to be glued to the gripper at startup. Detaching here lets them
-        rest on their pedestals until the FSM grabs one deliberately.
+        Publish detach to every box. Safe to call multiple times — the gz
+        subscriber may not be ready on the first publish, so the launch file
+        also fires this and we schedule repeats below.
         """
-        if self._initial_release_done:
-            return
-        self._initial_release_done = True
         self.get_logger().info(
             'Releasing all boxes from initial attached state...')
         for name in ALL_BOX_NAMES:
             self._detach_box(name)
         self.get_logger().info('Initial release complete.')
+
+    def _schedule_repeated_release(self):
+        """Re-broadcast detach at 1s and 3s in case the first attempt was
+        too early for the gz subscriber to be ready."""
+        self._t1 = self.create_timer(
+            1.0, self._release_once_then_cancel(lambda: self._t1),
+            callback_group=self.cb_group)
+        self._t2 = self.create_timer(
+            3.0, self._release_once_then_cancel(lambda: self._t2),
+            callback_group=self.cb_group)
+
+    def _release_once_then_cancel(self, get_timer):
+        """Returns a callback that fires the release once, then cancels
+        its own timer so it doesn't repeat forever."""
+        def cb():
+            self._initial_release_once()
+            t = get_timer()
+            if t is not None:
+                t.cancel()
+        return cb
 
     def _publish_done(self, success: bool):
         self.done_pub.publish(Bool(data=success))
