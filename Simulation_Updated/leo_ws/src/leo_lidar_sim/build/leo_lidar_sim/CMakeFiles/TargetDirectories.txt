@@ -1,9 +1,0 @@
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/uninstall.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/leo_lidar_sim_uninstall.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/test.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/edit_cache.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/rebuild_cache.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/list_install_components.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/install.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/install/local.dir
-/home/student31/leo_ws/src/leo_lidar_sim/build/leo_lidar_sim/CMakeFiles/install/strip.dir
