@@ -1,0 +1,69 @@
+# arm_controllers.yaml
+# ====================
+# ros2_control configuration for Leo Rover arm.
+# Joint names MUST match exactly what is in leo_with_visible_arm.urdf.xacro
+# and the <ros2_control> block inside it.
+#
+# Actual joints in URDF:
+#   arm_segment1_joint  — base pan (revolute, z-axis)
+#   arm_segment2_joint  — shoulder pitch (revolute, y-axis)
+#   arm_gripper_joint   — gripper/wrist (revolute, y-axis)
+
+controller_manager:
+  ros__parameters:
+    update_rate: 100  # Hz
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    gripper_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+
+# Controls the two main arm segments (pan + shoulder)
+arm_controller:
+  ros__parameters:
+    joints:
+      - arm_segment1_joint
+      - arm_segment2_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.05
+      goal_time: 0.0
+      arm_segment1_joint:
+        trajectory: 0.15
+        goal: 0.08
+      arm_segment2_joint:
+        trajectory: 0.15
+        goal: 0.08
+
+
+# Controls the gripper joint (open/close)
+gripper_controller:
+  ros__parameters:
+    joints:
+      - arm_gripper_joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.05
+      goal_time: 0.0
+      arm_gripper_joint:
+        trajectory: 0.15
+        goal: 0.08

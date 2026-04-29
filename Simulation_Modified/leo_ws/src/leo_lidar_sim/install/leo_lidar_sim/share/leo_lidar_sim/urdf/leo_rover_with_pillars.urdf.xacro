@@ -1,0 +1,98 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo_rover_with_pillars">
+
+  <!-- Include base Leo Rover URDF -->
+  <!-- ADJUST THIS PATH to match your actual leo rover urdf location -->
+  <xacro:include filename="$(find leo_description)/urdf/leo.urdf.xacro" />
+  
+  <!-- Pillar Parameters - EASILY ADJUSTABLE -->
+  <xacro:property name="pillar_height" value="0.30" />  <!-- 30cm height -->
+  <xacro:property name="pillar_radius" value="0.015" />  <!-- 3cm diameter = 1.5cm radius -->
+  <xacro:property name="pillar_mass" value="0.1" />      <!-- 100g per pillar -->
+  
+  <!-- Rover dimensions (Leo Rover approximate) -->
+  <xacro:property name="rover_length" value="0.358" />
+  <xacro:property name="rover_width" value="0.270" />
+  <xacro:property name="rover_height" value="0.19" />
+  
+  <!-- Pillar positions from center (corners of top plate) -->
+  <xacro:property name="pillar_offset_x" value="0.15" />  <!-- Front/back offset -->
+  <xacro:property name="pillar_offset_y" value="0.11" />  <!-- Left/right offset -->
+  
+  <!-- Pillar Macro -->
+  <xacro:macro name="pillar" params="name x y">
+    <!-- Pillar Link -->
+    <link name="${name}">
+      <visual>
+        <origin xyz="0 0 ${pillar_height/2}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${pillar_radius}" length="${pillar_height}"/>
+        </geometry>
+        <material name="pillar_gray">
+          <color rgba="0.5 0.5 0.5 1.0"/>  <!-- Gray aluminum -->
+        </material>
+      </visual>
+      
+      <collision>
+        <origin xyz="0 0 ${pillar_height/2}" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="${pillar_radius}" length="${pillar_height}"/>
+        </geometry>
+      </collision>
+      
+      <inertial>
+        <origin xyz="0 0 ${pillar_height/2}" rpy="0 0 0"/>
+        <mass value="${pillar_mass}"/>
+        <inertia ixx="${(pillar_mass/12)*(3*pillar_radius*pillar_radius + pillar_height*pillar_height)}"
+                 iyy="${(pillar_mass/12)*(3*pillar_radius*pillar_radius + pillar_height*pillar_height)}"
+                 izz="${(pillar_mass/2)*(pillar_radius*pillar_radius)}"
+                 ixy="0" ixz="0" iyz="0"/>
+      </inertial>
+    </link>
+    
+    <!-- Joint connecting pillar to base_link -->
+    <joint name="${name}_joint" type="fixed">
+      <parent link="base_link"/>
+      <child link="${name}"/>
+      <origin xyz="${x} ${y} ${rover_height}" rpy="0 0 0"/>
+    </joint>
+  </xacro:macro>
+  
+  <!-- Create 4 Pillars at Corners -->
+  <xacro:pillar name="pillar_front_left"  x="${pillar_offset_x}"  y="${pillar_offset_y}"/>
+  <xacro:pillar name="pillar_front_right" x="${pillar_offset_x}"  y="${-pillar_offset_y}"/>
+  <xacro:pillar name="pillar_rear_left"   x="${-pillar_offset_x}" y="${pillar_offset_y}"/>
+  <xacro:pillar name="pillar_rear_right"  x="${-pillar_offset_x}" y="${-pillar_offset_y}"/>
+  
+  <!-- Optional: Top plate connecting pillars -->
+  <link name="top_plate">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${rover_length*0.8} ${rover_width*0.8} 0.005"/>
+      </geometry>
+      <material name="plate_black">
+        <color rgba="0.2 0.2 0.2 1.0"/>
+      </material>
+    </visual>
+    
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="${rover_length*0.8} ${rover_width*0.8} 0.005"/>
+      </geometry>
+    </collision>
+    
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.001" iyy="0.001" izz="0.002" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  
+  <joint name="top_plate_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="top_plate"/>
+    <origin xyz="0 0 ${rover_height + pillar_height}" rpy="0 0 0"/>
+  </joint>
+
+</robot>
