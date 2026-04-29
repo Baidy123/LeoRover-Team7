@@ -1,0 +1,234 @@
+bt_navigator:
+  ros__parameters:
+    use_sim_time: true
+    global_frame: map
+    robot_base_frame: base_link
+    odom_topic: /odom
+    bt_loop_duration: 10
+    default_server_timeout: 20
+
+controller_server:
+  ros__parameters:
+    use_sim_time: true
+    controller_frequency: 20.0
+    min_x_velocity_threshold: 0.001
+    min_y_velocity_threshold: 0.0
+    min_theta_velocity_threshold: 0.001
+    failure_tolerance: 0.3
+    progress_checker_plugin: "progress_checker"
+    goal_checker_plugins: ["general_goal_checker"]
+    controller_plugins: ["FollowPath"]
+
+    progress_checker:
+      plugin: "nav2_controller::SimpleProgressChecker"
+      required_movement_radius: 0.3
+      movement_time_allowance: 15.0
+
+    general_goal_checker:
+      stateful: true
+      plugin: "nav2_controller::SimpleGoalChecker"
+      # Tight XY tolerance so the rover lands close to the 0.40m
+      # approach pose. Arm horizontal reach is ~0.48m; landing within
+      # 0.10m of the goal keeps box distance in 0.30..0.50m.
+      xy_goal_tolerance: 0.10
+      yaw_goal_tolerance: 3.1416
+
+    FollowPath:
+      plugin: "dwb_core::DWBLocalPlanner"
+      # Allow reverse so the rover can back away when stuck. Conservative
+      # max speeds so it doesn't slam into things at the limit of the
+      # local costmap before it can react.
+      min_vel_x: -0.2
+      min_vel_y: 0.0
+      max_vel_x: 0.35
+      max_vel_y: 0.0
+      max_vel_theta: 1.2
+      min_speed_xy: 0.0
+      max_speed_xy: 0.35
+      min_speed_theta: 0.0
+      acc_lim_x: 1.5
+      acc_lim_y: 0.0
+      acc_lim_theta: 3.0
+      decel_lim_x: -2.5
+      decel_lim_y: 0.0
+      decel_lim_theta: -3.2
+      vx_samples: 24
+      vy_samples: 1
+      vtheta_samples: 40
+      sim_time: 2.5
+      linear_granularity: 0.05
+      angular_granularity: 0.025
+      transform_tolerance: 0.2
+      xy_goal_tolerance: 0.10
+      trans_stopped_velocity: 0.05
+      short_circuit_trajectory_evaluation: true
+      stateful: true
+      # RotateToGoal removed — we don't want yaw alignment at the goal
+      # (the arm pans independently). Without it, the rover stops the
+      # moment XY tolerance is met and the mission can fire ARM_PICKUP
+      # instead of waiting for a yaw match that would never come.
+      critics: ["ObstacleFootprint", "Oscillation", "GoalAlign", "PathAlign", "PathDist", "GoalDist"]
+      ObstacleFootprint.scale: 32.0
+      ObstacleFootprint.sum_scores: false
+      PathAlign.scale: 24.0
+      PathAlign.forward_point_distance: 0.1
+      GoalAlign.scale: 6.0
+      GoalAlign.forward_point_distance: 0.1
+      PathDist.scale: 24.0
+      GoalDist.scale: 16.0
+      Oscillation.scale: 1.0
+      Oscillation.oscillation_reset_dist: 0.05
+      Oscillation.oscillation_reset_angle: 0.2
+
+local_costmap:
+  local_costmap:
+    ros__parameters:
+      update_frequency: 10.0
+      publish_frequency: 5.0
+      global_frame: odom
+      robot_base_frame: base_link
+      use_sim_time: true
+      rolling_window: true
+      width: 6
+      height: 6
+      resolution: 0.05
+      robot_radius: 0.22
+      transform_tolerance: 0.3
+      plugins: ["voxel_layer", "inflation_layer"]
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 5.0
+        inflation_radius: 0.10
+      voxel_layer:
+        plugin: "nav2_costmap_2d::VoxelLayer"
+        enabled: true
+        publish_voxel_map: true
+        origin_z: 0.0
+        z_resolution: 0.05
+        z_voxels: 16
+        max_obstacle_height: 1.5
+        min_obstacle_height: 0.0
+        unknown_threshold: 15
+        mark_threshold: 0
+        combination_method: 1
+        observation_sources: scan
+        scan:
+          topic: /scan
+          sensor_frame: rover_lidar_link
+          max_obstacle_height: 1.5
+          min_obstacle_height: 0.05
+          obstacle_max_range: 5.0
+          obstacle_min_range: 0.0
+          raytrace_max_range: 6.0
+          raytrace_min_range: 0.0
+          expected_update_rate: 0.3
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          inf_is_valid: false
+
+global_costmap:
+  global_costmap:
+    ros__parameters:
+      update_frequency: 5.0
+      publish_frequency: 2.0
+      global_frame: map
+      robot_base_frame: base_link
+      use_sim_time: true
+      robot_radius: 0.22
+      resolution: 0.05
+      track_unknown_space: true
+      transform_tolerance: 0.3
+      plugins: ["static_layer", "obstacle_layer", "inflation_layer"]
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: true
+        observation_sources: scan
+        combination_method: 1
+        scan:
+          topic: /scan
+          sensor_frame: rover_lidar_link
+          max_obstacle_height: 1.5
+          min_obstacle_height: 0.05
+          obstacle_max_range: 5.0
+          obstacle_min_range: 0.0
+          raytrace_max_range: 6.0
+          raytrace_min_range: 0.0
+          expected_update_rate: 0.3
+          clearing: true
+          marking: true
+          data_type: "LaserScan"
+          inf_is_valid: false
+      static_layer:
+        plugin: "nav2_costmap_2d::StaticLayer"
+        map_subscribe_transient_local: true
+      inflation_layer:
+        plugin: "nav2_costmap_2d::InflationLayer"
+        cost_scaling_factor: 5.0
+        inflation_radius: 0.10
+
+planner_server:
+  ros__parameters:
+    expected_planner_frequency: 5.0
+    use_sim_time: true
+    planner_plugins: ["GridBased"]
+    GridBased:
+      plugin: "nav2_navfn_planner::NavfnPlanner"
+      tolerance: 0.5
+      use_astar: true
+      allow_unknown: true
+
+smoother_server:
+  ros__parameters:
+    use_sim_time: true
+    smoother_plugins: ["simple_smoother"]
+    simple_smoother:
+      plugin: "nav2_smoother::SimpleSmoother"
+      tolerance: 1.0e-10
+      max_its: 1000
+      do_refinement: true
+
+behavior_server:
+  ros__parameters:
+    use_sim_time: true
+    local_costmap_topic: local_costmap/costmap_raw
+    global_costmap_topic: global_costmap/costmap_raw
+    local_footprint_topic: local_costmap/published_footprint
+    global_footprint_topic: global_costmap/published_footprint
+    cycle_frequency: 10.0
+    behavior_plugins: ["spin", "backup", "drive_on_heading", "wait"]
+    spin:
+      plugin: "nav2_behaviors::Spin"
+    backup:
+      plugin: "nav2_behaviors::BackUp"
+    drive_on_heading:
+      plugin: "nav2_behaviors::DriveOnHeading"
+    wait:
+      plugin: "nav2_behaviors::Wait"
+    local_frame: odom
+    global_frame: map
+    robot_base_frame: base_link
+    transform_tolerance: 0.3
+    simulate_ahead_time: 2.0
+    max_rotational_vel: 1.0
+    min_rotational_vel: 0.4
+    rotational_acc_lim: 3.2
+
+waypoint_follower:
+  ros__parameters:
+    use_sim_time: true
+
+velocity_smoother:
+  ros__parameters:
+    use_sim_time: true
+    smoothing_frequency: 20.0
+    scale_velocities: false
+    feedback: "OPEN_LOOP"
+    max_velocity: [0.4, 0.0, 1.2]
+    min_velocity: [-0.25, 0.0, -1.2]
+    max_accel: [2.0, 0.0, 3.2]
+    max_decel: [-2.5, 0.0, -3.2]
+    odom_topic: "odom"
+    odom_duration: 0.1
+    deadband_velocity: [0.0, 0.0, 0.0]
+    velocity_timeout: 1.0

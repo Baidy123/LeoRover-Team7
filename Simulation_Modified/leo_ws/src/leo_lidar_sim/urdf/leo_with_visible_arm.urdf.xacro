@@ -1,0 +1,417 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="leo_with_visible_arm">
+
+  <!-- Official Leo Rover base (provides base_footprint, base_link, wheels, sensors). -->
+  <xacro:include filename="$(find leo_description)/urdf/leo_sim.urdf.xacro"/>
+
+  <!-- ─────────────────────────────────────────────────────────────────────
+       4-segment arm + 2-finger gripper.
+
+       Frame chain (arm_controller.py FK depends on these exact offsets):
+         base_link → arm_platform   (+0.11 z, fixed)
+                   → arm_segment1   (+0.05 z, revolute Z  "seg1",  L=0.28)
+                   → arm_segment2   (+0.28 z, revolute Y  "seg2",  L=0.28)
+                   → arm_forearm    (+0.28 z, revolute Y  "fore",  L=0.18)
+                   → arm_gripper    (+0.18 z, revolute Y  "wrist", L=0.13)
+                   → finger_left    (prismatic Y, "fl")
+                   → finger_right   (prismatic -Y, "fr")
+       ────────────────────────────────────────────────────────────────── -->
+
+  <!-- Arm mount plate -->
+  <link name="arm_platform">
+    <visual>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.06" length="0.05"/></geometry>
+      <material name="platform_color"><color rgba="0.3 0.3 0.3 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.025" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.06" length="0.05"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.4"/>
+      <origin xyz="0 0 0.025"/>
+      <inertia ixx="0.0008" iyy="0.0008" izz="0.0008" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_platform_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="arm_platform"/>
+    <origin xyz="0 0 0.11" rpy="0 0 0"/>
+  </joint>
+
+  <!-- Segment 1 — vertical pillar, pans about Z -->
+  <link name="arm_segment1">
+    <visual>
+      <origin xyz="0 0 0.14" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.030" length="0.28"/></geometry>
+      <material name="arm_color"><color rgba="0.1 0.3 0.9 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.14" rpy="0 0 0"/>
+      <geometry><cylinder radius="0.030" length="0.28"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.25"/>
+      <origin xyz="0 0 0.14"/>
+      <inertia ixx="0.0017" iyy="0.0017" izz="0.0001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_segment1_joint" type="revolute">
+    <parent link="arm_platform"/>
+    <child link="arm_segment1"/>
+    <origin xyz="0 0 0.05" rpy="0 0 0"/>
+    <axis xyz="0 0 1"/>
+    <limit lower="-3.14" upper="3.14" effort="3.0" velocity="1.5"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <!-- Segment 2 — shoulder to elbow, pitches about Y -->
+  <link name="arm_segment2">
+    <visual>
+      <origin xyz="0 0 0.14" rpy="0 0 0"/>
+      <geometry><box size="0.035 0.035 0.28"/></geometry>
+      <material name="arm_color"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.14" rpy="0 0 0"/>
+      <geometry><box size="0.035 0.035 0.28"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.20"/>
+      <origin xyz="0 0 0.14"/>
+      <inertia ixx="0.0014" iyy="0.0014" izz="0.00005" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_segment2_joint" type="revolute">
+    <parent link="arm_segment1"/>
+    <child link="arm_segment2"/>
+    <origin xyz="0 0 0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-1.8" upper="1.8" effort="3.0" velocity="1.5"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <!-- Forearm — elbow to wrist, pitches about Y. Length matches the
+       arm_controller IK's L_FORE constant (0.30) so the gripper
+       physically reaches where the IK targets — eliminates the
+       gripper-to-box gap that was visible at attach time. -->
+  <link name="arm_forearm">
+    <visual>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <geometry><box size="0.030 0.030 0.30"/></geometry>
+      <material name="arm_color"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.15" rpy="0 0 0"/>
+      <geometry><box size="0.030 0.030 0.30"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.15"/>
+      <origin xyz="0 0 0.15"/>
+      <inertia ixx="0.0012" iyy="0.0012" izz="0.00003" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_forearm_joint" type="revolute">
+    <parent link="arm_segment2"/>
+    <child link="arm_forearm"/>
+    <origin xyz="0 0 0.28" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.4" upper="2.4" effort="2.5" velocity="1.5"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <!-- Gripper palm — wrist pitch about Y, palm length 0.13 -->
+  <link name="arm_gripper">
+    <visual>
+      <origin xyz="0 0 0.065" rpy="0 0 0"/>
+      <geometry><box size="0.060 0.080 0.13"/></geometry>
+      <material name="gripper_color"><color rgba="0.15 0.15 0.15 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.065" rpy="0 0 0"/>
+      <geometry><box size="0.060 0.080 0.13"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.10"/>
+      <origin xyz="0 0 0.065"/>
+      <inertia ixx="0.0002" iyy="0.0002" izz="0.0001" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="arm_gripper_joint" type="revolute">
+    <parent link="arm_forearm"/>
+    <child link="arm_gripper"/>
+    <origin xyz="0 0 0.30" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-2.0" upper="2.0" effort="2.0" velocity="1.5"/>
+    <dynamics damping="0.3" friction="0.1"/>
+  </joint>
+
+  <!-- Finger left — prismatic +Y -->
+  <link name="finger_left">
+    <visual>
+      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <geometry><box size="0.015 0.015 0.08"/></geometry>
+      <material name="finger_color"><color rgba="0.9 0.9 0.9 1"/></material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <geometry><box size="0.015 0.015 0.08"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.02"/>
+      <origin xyz="0 0 0.04"/>
+      <inertia ixx="0.00002" iyy="0.00002" izz="0.000005" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="finger_left_joint" type="prismatic">
+    <parent link="arm_gripper"/>
+    <child link="finger_left"/>
+    <origin xyz="0 0.025 0.13" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+    <limit lower="-0.025" upper="0.04" effort="20" velocity="0.2"/>
+    <dynamics damping="2.0" friction="0.5"/>
+  </joint>
+
+  <!-- Finger right — prismatic -Y, mirrored -->
+  <link name="finger_right">
+    <visual>
+      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <geometry><box size="0.015 0.015 0.08"/></geometry>
+      <material name="finger_color"/>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.04" rpy="0 0 0"/>
+      <geometry><box size="0.015 0.015 0.08"/></geometry>
+    </collision>
+    <inertial>
+      <mass value="0.02"/>
+      <origin xyz="0 0 0.04"/>
+      <inertia ixx="0.00002" iyy="0.00002" izz="0.000005" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <joint name="finger_right_joint" type="prismatic">
+    <parent link="arm_gripper"/>
+    <child link="finger_right"/>
+    <origin xyz="0 -0.025 0.13" rpy="0 0 0"/>
+    <axis xyz="0 -1 0"/>
+    <limit lower="-0.025" upper="0.04" effort="20" velocity="0.2"/>
+    <dynamics damping="2.0" friction="0.5"/>
+  </joint>
+
+  <!-- ─── Dedicated GPU LiDAR mount link ────────────────────────────────────
+       leo_description's lidar_link already has a sensor type="ray" that
+       gz Harmonic ignores; putting a second sensor on the same link
+       sometimes makes gz drop the model load entirely (which is why the
+       arm just stopped responding). New link "rover_lidar_link" mounted
+       at the same physical position (front of rover, z=0.26 world). -->
+  <link name="rover_lidar_link">
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1e-5" iyy="1e-5" izz="1e-5" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+  </link>
+  <!-- Lidar mounted forward of rover at world z≈0.26 with 360° FOV.
+       Sees boxes (z=0.20..0.30) and walls; SLAM gets enough scan
+       coverage to keep the map growing as the rover moves. -->
+  <joint name="rover_lidar_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="rover_lidar_link"/>
+    <origin xyz="0.15 0 0.10" rpy="0 0 0"/>
+  </joint>
+  <gazebo reference="rover_lidar_link">
+    <sensor name="rover_lidar" type="gpu_lidar">
+      <pose>0 0 0 0 0 0</pose>
+      <topic>/scan_gpu</topic>
+      <gz_frame_id>rover_lidar_link</gz_frame_id>
+      <update_rate>10</update_rate>
+      <always_on>1</always_on>
+      <visualize>true</visualize>
+      <lidar>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.20</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+      </lidar>
+    </sensor>
+  </gazebo>
+
+  <!-- ─── Gazebo materials & visual hints ─────────────────────────────────── -->
+  <gazebo reference="arm_platform">
+    <material>Gazebo/Grey</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="arm_segment1">
+    <material>Gazebo/Blue</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="arm_segment2">
+    <material>Gazebo/Blue</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="arm_forearm">
+    <material>Gazebo/Blue</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="arm_gripper">
+    <material>Gazebo/Black</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="finger_left">
+    <material>Gazebo/White</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+  <gazebo reference="finger_right">
+    <material>Gazebo/White</material>
+    <selfCollide>false</selfCollide>
+  </gazebo>
+
+  <!-- ─── DetachableJoint plugins for rigid pickup/place ────────────────────
+       One plugin per box. Each plugin connects arm_gripper (in this
+       rover model) to a specific box (separate model in the world).
+       Plugins start ATTACHED at sim start, so boxes are pulled to the
+       gripper. The launch file publishes /box/<name>/detach in the
+       first 6 s of sim, releasing all boxes back to their pedestal
+       initial poses.
+       After release, the arm_controller's existing /box/<name>/attach
+       publish reattaches the targeted box, providing a RIGID joint
+       between gripper and box — no teleport, no bouncing. -->
+  <gazebo>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>red_box_1</child_model>
+      <child_link>link</child_link>
+      <topic>/box/red_box_1/detach</topic>
+      <detach_topic>/box/red_box_1/detach</detach_topic>
+      <attach_topic>/box/red_box_1/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>red_box_2</child_model>
+      <child_link>link</child_link>
+      <topic>/box/red_box_2/detach</topic>
+      <detach_topic>/box/red_box_2/detach</detach_topic>
+      <attach_topic>/box/red_box_2/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>green_box_1</child_model>
+      <child_link>link</child_link>
+      <topic>/box/green_box_1/detach</topic>
+      <detach_topic>/box/green_box_1/detach</detach_topic>
+      <attach_topic>/box/green_box_1/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>green_box_2</child_model>
+      <child_link>link</child_link>
+      <topic>/box/green_box_2/detach</topic>
+      <detach_topic>/box/green_box_2/detach</detach_topic>
+      <attach_topic>/box/green_box_2/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>blue_box_1</child_model>
+      <child_link>link</child_link>
+      <topic>/box/blue_box_1/detach</topic>
+      <detach_topic>/box/blue_box_1/detach</detach_topic>
+      <attach_topic>/box/blue_box_1/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+    <plugin filename="gz-sim-detachable-joint-system"
+            name="gz::sim::systems::DetachableJoint">
+      <parent_link>arm_gripper</parent_link>
+      <child_model>blue_box_2</child_model>
+      <child_link>link</child_link>
+      <topic>/box/blue_box_2/detach</topic>
+      <detach_topic>/box/blue_box_2/detach</detach_topic>
+      <attach_topic>/box/blue_box_2/attach</attach_topic>
+      <suppress_child_warning>true</suppress_child_warning>
+    </plugin>
+  </gazebo>
+
+  <!-- ─── gz JointPositionController plugins ─────────────────────────────────
+       arm_controller.py publishes setpoints to /model/leo/joint/<joint>/cmd_pos
+       via gz transport. Each joint needs its own controller plugin. -->
+  <gazebo>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>arm_segment1_joint</joint_name>
+      <topic>/model/leo/joint/arm_segment1_joint/cmd_pos</topic>
+      <p_gain>8.0</p_gain>
+      <i_gain>0.05</i_gain>
+      <d_gain>0.5</d_gain>
+      <i_max>1.5</i_max>
+      <i_min>-1.5</i_min>
+    </plugin>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>arm_segment2_joint</joint_name>
+      <topic>/model/leo/joint/arm_segment2_joint/cmd_pos</topic>
+      <p_gain>10.0</p_gain>
+      <i_gain>0.05</i_gain>
+      <d_gain>0.7</d_gain>
+      <i_max>1.5</i_max>
+      <i_min>-1.5</i_min>
+    </plugin>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>arm_forearm_joint</joint_name>
+      <topic>/model/leo/joint/arm_forearm_joint/cmd_pos</topic>
+      <p_gain>8.0</p_gain>
+      <i_gain>0.05</i_gain>
+      <d_gain>0.5</d_gain>
+      <i_max>1.5</i_max>
+      <i_min>-1.5</i_min>
+    </plugin>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>arm_gripper_joint</joint_name>
+      <topic>/model/leo/joint/arm_gripper_joint/cmd_pos</topic>
+      <p_gain>6.0</p_gain>
+      <i_gain>0.05</i_gain>
+      <d_gain>0.4</d_gain>
+      <i_max>1.0</i_max>
+      <i_min>-1.0</i_min>
+    </plugin>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>finger_left_joint</joint_name>
+      <topic>/model/leo/joint/finger_left_joint/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>0.5</i_gain>
+      <d_gain>1.0</d_gain>
+      <i_max>5.0</i_max>
+      <i_min>-5.0</i_min>
+    </plugin>
+    <plugin filename="gz-sim-joint-position-controller-system"
+            name="gz::sim::systems::JointPositionController">
+      <joint_name>finger_right_joint</joint_name>
+      <topic>/model/leo/joint/finger_right_joint/cmd_pos</topic>
+      <p_gain>50.0</p_gain>
+      <i_gain>0.5</i_gain>
+      <d_gain>1.0</d_gain>
+      <i_max>5.0</i_max>
+      <i_min>-5.0</i_min>
+    </plugin>
+  </gazebo>
+
+</robot>
