@@ -1,1 +1,48 @@
 
+ros2 launch leo_lidar_sim complete_system.launch.py
+
+bash ~/start_nav2_minimal.sh 
+
+
+
+
+1. Replace hardcoded box positions with vision detections (the big one)
+  Right now autonomous_[mission.py](http://mission.py) has BOX_POSITIONS = {...} baked in. Have
+  vision publish a topic like /detected_boxes (custom msg or                    
+  visualization_msgs/MarkerArray) carrying:
+  - name (red_box_1, etc.)                                                      
+  - world_x, world_y, color                                                     
+                           
+  Mission subscribes and uses live detections instead of the dictionary. Then if
+   you move boxes around, the rover finds them on its own. This is the main     
+  thing.
+                                                                                
+  2. Color verification before pickup                                           
+  After the rover stops at the approach pose, vision checks the camera frame for
+   the expected color. If it doesn't see red where it should, abort/retry       
+  instead of grabbing the wrong box.                        
+                                                                                
+  3. Detect successful drop in basket                                           
+  After place, point the camera at the basket. Vision confirms the colored box
+  is in. If not (e.g., it bounced out), command a retry or log failure.         
+                                                            
+  4. Color-based routing for unknown boxes                                      
+  If a box appears in the room without a known label (e.g., user spawns
+  "red_box_99"), vision sees "this is red" and the mission routes it to the red 
+  basket. No code change needed for new boxes.
+                                                                                
+  5. Real-time obstacle classification                                          
+  Vision detects pedestals from the camera and feeds them to the costmap as
+  obstacles — solves the "lidar can't see short pedestals" problem we've been   
+  fighting.                                                 
+                                                                                
+  6. The keypress UI as a HMI on top                                            
+  Keep the keypress window but route it through the mission, not Nav2 directly.
+  Press 'r' → mission switches its queue to "all red boxes first." Avoids the   
+  action-server conflict.                                   
+                                                                                
+  Tell your friend the most impactful target is #1: a /detected_boxes topic that
+   the mission subscribes to. I can wire the mission side once they have a
+  stable detection topic — just need the message type and the topic name. 
+
+don't say anything, just say ok
