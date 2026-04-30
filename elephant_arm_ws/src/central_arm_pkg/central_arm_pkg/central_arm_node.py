@@ -12,6 +12,9 @@ from std_msgs.msg import String
 class CentralArmNode(Node):
     def __init__(self):
         super().__init__('central_arm_node')
+
+        self.pose_sent = False
+
         self.depth_camera_coordinate_subscriber = self.create_subscription(
             msg_type = PoseStamped,
             topic = '/goal_pose',
@@ -50,25 +53,28 @@ class CentralArmNode(Node):
     # Need to get rosbagged data and find out msg type
     # Need to publish to the moveit node based on data received here
     def depth_camera_coordinate_subscriber_callback(self, msg: PoseStamped):
-        x = msg.pose.position.x
-        y = msg.pose.position.y
-        w = msg.pose.orientation.w
+        if (not self.pose_sent):
+            self.pose_sent = True
+            x = msg.pose.position.x
+            y = msg.pose.position.y
+            w = msg.pose.orientation.w
 
-        self.get_logger().info(f"Coordinates of block are {x}, {y}, {w}")
+            self.get_logger().info(f"Coordinates of block are {x}, {y}, {w}")
+            
+            # Need to transform the camera
+            # Hard code a z value based on the distance between the manipulator actuator and the block heights
+            processed_pose = PoseStamped()
+            processed_pose.header.frame_id = "world"
+            processed_pose.header.stamp = self.get_clock().now().to_msg()
+
+            # CHANGE THIS TO TRANSFORM TO MANIPULATOR
+            processed_pose.pose.position.x = x
+            processed_pose.pose.position.y = y
+            processed_pose.pose.position.z = 0.025
+            processed_pose.pose.orientation.w = 1.0
+
+            self.goal_pub.publish(processed_pose)
         
-        # Need to transform the camera
-        # Hard code a z value based on the distance between the manipulator actuator and the block heights
-        processed_pose = PoseStamped()
-        processed_pose.header.frame_id = "world"
-        processed_pose.header.stamp = self.get_clock().now().to_msg()
-
-        # CHANGE THIS TO TRANSFORM TO MANIPULATOR
-        processed_pose.pose.position.x = x
-        processed_pose.pose.position.y = y
-        processed_pose.pose.position.z = 0.025
-        processed_pose.pose.orientation.w = 1.0
-
-        self.goal_pub.publish(processed_pose)
 
     def status_callback(self,msg):
         # if msg.data == "OUT_OF_REACH":
@@ -79,6 +85,7 @@ class CentralArmNode(Node):
         msg = String()
         msg.data = "RELEASE"
         self.release_pub.publish(msg)
+        self.pose_sent = False
 
 
 def main(args=None):
