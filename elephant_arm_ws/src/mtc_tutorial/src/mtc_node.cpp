@@ -350,20 +350,20 @@ mtc::Task MTCTaskNode::createReleaseTask(){
     }
 
     // Retreat from object
-    // {
-    //   auto stage = std::make_unique<mtc::stages::MoveRelative>("retreat", cartesian_planner);
-    //   stage->properties().configureInitFrom(mtc::Stage::PARENT, {"group"});
-    //   stage->setMinMaxDistance(0.01, 0.1);
-    //   stage->setIKFrame(hand_frame);
-    //   stage->properties().set("marker_ns", "retreat");
+    {
+      auto stage = std::make_unique<mtc::stages::MoveRelative>("retreat", cartesian_planner);
+      stage->properties().configureInitFrom(mtc::Stage::PARENT, {"group"});
+      stage->setMinMaxDistance(0.01, 0.1);
+      stage->setIKFrame(hand_frame);
+      stage->properties().set("marker_ns", "retreat");
 
-    //   geometry_msgs::msg::Vector3Stamped vec;
-    //   // vec.header.frame_id = "world";
-    //   vec.header.frame_id = hand_frame;
-    //   vec.vector.x = 1.0;
-    //   stage->setDirection(vec);
-    //   place->insert(std::move(stage));
-    // }
+      geometry_msgs::msg::Vector3Stamped vec;
+      // vec.header.frame_id = "world";
+      vec.header.frame_id = hand_frame;
+      vec.vector.x = 1.0;
+      stage->setDirection(vec);
+      place->insert(std::move(stage));
+    }
 
     task.add(std::move(place));
 
@@ -371,7 +371,7 @@ mtc::Task MTCTaskNode::createReleaseTask(){
     {
       auto stage = std::make_unique<mtc::stages::MoveTo>("return ready", interpolation_planner);
       stage->properties().configureInitFrom(mtc::Stage::PARENT, {"group"});
-      stage->setGoal("ready");
+      stage->setGoal("home");
       task.add(std::move(stage));
     }
   }
@@ -473,7 +473,7 @@ mtc::Task MTCTaskNode::createTask()
       Eigen::Isometry3d grasp_frame_transform;
       Eigen::Quaterniond q(Eigen::AngleAxisd(M_PI, Eigen::Vector3d::UnitY()));
       grasp_frame_transform.linear() = q.matrix();
-      grasp_frame_transform.translation().z() = 0.08;
+      grasp_frame_transform.translation().z() = 0.09;
       
       auto wrapper = std::make_unique<mtc::stages::ComputeIK>("grasp pose IK", std::move(stage));
       wrapper->setMaxIKSolutions(20);
