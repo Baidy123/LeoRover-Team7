@@ -15,3 +15,5 @@ for n in /controller_server /planner_server /behavior_server /bt_navigator /smoo
 
 Connection:
 ssh team7@10.209.184.203
+
+ssh -X team7@10.209.184.203
