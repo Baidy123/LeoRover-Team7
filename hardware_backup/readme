@@ -9,3 +9,9 @@ ros2 launch leo_test real_robot.launch.py 2>&1 | tee /tmp/launch.log
 
 for n in /controller_server /planner_server /behavior_server /bt_navigator /smoother_server /velocity_smoother /waypoint_follower; do ros2 lifecycle set $n configure 2>/dev/null; ros2 lifecycle set $n activate 2>/dev/null;done 
  for n in /controller_server /planner_server /behavior_server /bt_navigator /smoother_server /velocity_smoother /waypoint_follower; do echo "$n: $(ros2 lifecycle get $n 2>/dev/null)"; done
+
+
+
+
+Connection:
+ssh team7@10.209.184.203
