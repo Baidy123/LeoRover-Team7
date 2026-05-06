@@ -17,3 +17,14 @@ Connection:
 ssh team7@10.209.184.203
 
 ssh -X team7@10.209.184.203
+
+
+
+
+
+
+Record data:
+ros2 bag record /odom /cmd_vel /firmware/battery /firmware/battery_averaged \
+  -o /tmp/demo_run
+
+# This creates a folder /tmp/demo_run/ with all the data
