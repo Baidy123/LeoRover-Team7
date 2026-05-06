@@ -12,6 +12,11 @@ for n in /controller_server /planner_server /behavior_server /bt_navigator /smoo
 
 
 
+python3 /home/team7/leo_test/scripts/cmd_vel_relay.py
+
+
+
+
 
 Connection:
 ssh team7@10.209.184.203
